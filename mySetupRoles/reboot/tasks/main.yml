@@ -1,0 +1,7 @@
+---
+# tasks file for reboot
+- name: Rebooting the cloud server/bare metal box
+  reboot:
+    pre_reboot_delay: 0 # not required. Seconds to wait before reboot. Passed as a parameter to the reboot command. On Linux, macOS and OpenBSD, this is converted to minutes and rounded down. If less than 60, it will be set to 0. On Solaris and FreeBSD, this will be seconds.
+    post_reboot_delay: 0 # not required. Seconds to wait after the reboot command was successful before attempting to validate the system rebooted successfully. This is useful if you want wait for something to settle despite your connection already working.
+    reboot_timeout: 0

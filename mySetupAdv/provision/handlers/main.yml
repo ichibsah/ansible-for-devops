@@ -1,0 +1,4 @@
+---
+# handlers file for provision
+- name: restart ssh
+  service: name=sshd state=restarted

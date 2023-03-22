@@ -1,0 +1,25 @@
+
+---
+- hosts: multi
+  gather_facts: yes
+  become: yes
+
+  pre_tasks:
+    - name: Update apt cache if needed
+      apt: 
+        update_cache: yes
+        cache_valid_time: 3600  
+
+  vars_files:
+    - vars/keys.yml
+
+  handlers:
+    - name: restart ssh
+      service: name=sshd state=restarted
+
+  tasks:
+  - import_tasks: tasks/createusers.yml
+  - import_tasks: tasks/ssh.yml
+  - import_tasks: tasks/apt-packages.yml
+    #- import_tasks: tasks/test.yml
+  ##- import_tasks: docker.yml  

@@ -1,0 +1,39 @@
+---
+# tasks file for provisions
+- name: Update apt cache if needed
+  apt: 
+    update_cache: yes
+    cache_valid_time: 3600
+
+# User account configuration.
+- name: Add a deployment user.
+  user:
+    name: ibrahim # required. Name of the user to create, remove or modify.
+    uid: 1000 # not required. Optionally sets the I(UID) of the user.
+    shell: /bin/bash # not required. Optionally set the user's shell. On macOS, before Ansible 2.5, the default shell for non-system users was C(/usr/bin/false). Since Ansible 2.5, the default shell for non-system users on macOS is C(/bin/bash). On other operating systems, the default shell is determined by the underlying tool being used. See Notes for details.
+    state: present # not required. choices: absent;present. Whether the account should exist or not, taking action if the state is different from what is stated.
+            
+# Disable root login and use `sudo`.
+- name: Add sudo rights for deployment user.
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: '^ibrahim'
+    line: 'ibrahim ALL=(ALL) NOPASSWD: ALL'
+    state: present
+    validate: 'visudo -cf %s'
+
+- name: Copy default user's home files in place.
+  copy:
+    src: "files/home/ibrahim"
+    dest: "/home"
+    owner: ibrahim
+    group: ibrahim
+    mode: 0644
+  when: ansible_os_family == 'Debian'
+
+# - name: Install gpg package on server
+#   apt:
+#     name: 
+#     - gpg
+#   state: present
+ 

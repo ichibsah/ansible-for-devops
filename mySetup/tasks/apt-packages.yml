@@ -1,0 +1,35 @@
+---
+- name: Import Docker-ce GPG Key
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg # not required. The URL to retrieve key from.
+    state: present # not required. choices: absent;present. Ensures that the key is present (added) or absent (revoked).
+    validate_certs: yes # not required. If C(no), SSL certificates for the target url will not be validated. This should only be used on personally controlled sites using self-signed certificates.
+
+- name: Add Docker-ce Repo
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/debian bullseye stable"
+    state: present # not required. choices: absent;present. A source string state.
+    mode: 0644 # not required. The octal mode for newly created files in sources.list.d
+    update_cache: yes # not required. Run the equivalent of C(apt-get update) when a change occurs.  Cache updates are run after making changes.
+    validate_certs: yes 
+
+- name: Install packages on server
+  apt:
+    name: 
+      - chrony
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+      - gpg
+      - software-properties-common
+      - ncdu
+      - docker-ce
+      - docker-compose-plugin
+    state: present
+
+- name: Ensure Demons are running.
+  service: "name={{ item }} state=started enabled=yes"
+  with_items: 
+    - chronyd
+    - docker

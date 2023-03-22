@@ -1,0 +1,9 @@
+---
+- hosts: provision
+  remote_user: root
+  #remote_user: ibrahim
+  become: yes
+  become_user: root
+  roles:
+    - provisions
+    - ssh

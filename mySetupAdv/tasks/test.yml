@@ -1,0 +1,120 @@
+---
+- template:
+  src:  # required. Path of a Jinja2 formatted template on the Ansible controller. This can be a relative or an absolute path. The file must be encoded with C(utf-8) but I(output_encoding) can be used to control the encoding of the output template.
+  dest:  # required. Location to render the template to on the remote machine.
+  follow: False # not required. Determine whether symbolic links should be followed. When set to C(yes) symbolic links will be followed, if they exist. When set to C(no) symbolic links will not be followed. Previous to Ansible 2.4, this was hardcoded as C(yes).
+  backup: False # not required. Create a backup file including the timestamp information so you can get the original file back if you somehow clobbered it incorrectly.
+  mode:  # not required. The permissions the resulting file or directory should have. For those used to I(/usr/bin/chmod) remember that modes are actually octal numbers. You must either add a leading zero so that Ansible's YAML parser knows it is an octal number (like C(0644) or C(01777)) or quote it (like C('644') or C('1777')) so Ansible receives a string and can do its own conversion from string into number. Giving Ansible a number without following one of these rules will end up with a decimal number which will have unexpected results. As of Ansible 1.8, the mode may be specified as a symbolic mode (for example, C(u+rwx) or C(u=rw,g=r,o=r)). As of Ansible 2.6, the mode may also be the special string C(preserve). When set to C(preserve) the file will be given the same permissions as the source file.
+  owner:  # not required. Name of the user that should own the file/directory, as would be fed to I(chown).
+  group:  # not required. Name of the group that should own the file/directory, as would be fed to I(chown).
+  seuser:  # not required. The user part of the SELinux file context. By default it uses the C(system) policy, where applicable. When set to C(_default), it will use the C(user) portion of the policy if available.
+  serole:  # not required. The role part of the SELinux file context. When set to C(_default), it will use the C(role) portion of the policy if available.
+  setype:  # not required. The type part of the SELinux file context. When set to C(_default), it will use the C(type) portion of the policy if available.
+  selevel: s0 # not required. The level part of the SELinux file context. This is the MLS/MCS attribute, sometimes known as the C(range). When set to C(_default), it will use the C(level) portion of the policy if available.
+  unsafe_writes: False # not required. Influence when to use atomic operation to prevent data corruption or inconsistent reads from the target file. By default this module uses atomic operations to prevent data corruption or inconsistent reads from the target files, but sometimes systems are configured or just broken in ways that prevent this. One example is docker mounted files, which cannot be updated atomically from inside the container and can only be written in an unsafe manner. This option allows Ansible to fall back to unsafe methods of updating files when atomic operations fail (however, it doesn't force Ansible to perform unsafe writes). IMPORTANT! Unsafe writes are subject to race conditions and can lead to data corruption.
+  attributes:  # not required. The attributes the resulting file or directory should have. To get supported flags look at the man page for I(chattr) on the target system. This string should contain the attributes in the same order as the one displayed by I(lsattr). The C(=) operator is assumed as default, otherwise C(+) or C(-) operators need to be included in the string.
+  newline_sequence: \n # not required. choices: \n;\r;\r\n. Specify the newline sequence to use for templating files.
+  
+  lstrip_blocks: False # not required. Determine when leading spaces and tabs should be stripped. When set to C(yes) leading spaces and tabs are stripped from the start of a line to a block. This functionality requires Jinja 2.7 or newer.
+  force: True # not required. Determine when the file is being transferred if the destination already exists. When set to C(yes), replace the remote file when contents are different than the source. When set to C(no), the file will only be transferred if the destination does not exist.
+  output_encoding: utf-8 # not required. Overrides the encoding used to write the template file defined by C(dest). It defaults to C(utf-8), but any encoding supported by python can be used. The source template file must always be encoded using C(utf-8), for homogeneity.
+  validate:  # not required. The validation command to run before copying into place. The path to the file to validate is passed in via '%s' which must be present as in the examples below. The command is passed securely so shell features like expansion and pipes will not work.
+
+- cs_vpn_gateway:
+  vpc:  # required. Name of the VPC.
+  state: present # not required. choices: present;absent. State of the VPN gateway.
+  domain:  # not required. Domain the VPN gateway is related to.
+  account:  # not required. Account the VPN gateway is related to.
+  project:  # not required. Name of the project the VPN gateway is related to.
+  zone:  # not required. Name of the zone the VPC is related to. If not set, default zone is used.
+  poll_async: True # not required. Poll async jobs until job has finished.
+  api_key:  # not required. API key of the CloudStack API. If not given, the C(CLOUDSTACK_KEY) env variable is considered. As the last option, the value is taken from the ini config file, also see the notes.
+  api_secret:  # not required. Secret key of the CloudStack API. If not set, the C(CLOUDSTACK_SECRET) env variable is considered. As the last option, the value is taken from the ini config file, also see the notes.
+  api_url:  # not required. URL of the CloudStack API e.g. https://cloud.example.com/client/api. If not given, the C(CLOUDSTACK_ENDPOINT) env variable is considered. As the last option, the value is taken from the ini config file, also see the notes.
+  api_http_method: get # not required. choices: get;post. HTTP method used to query the API endpoint. If not given, the C(CLOUDSTACK_METHOD) env variable is considered. As the last option, the value is taken from the ini config file, also see the notes. Fallback value is C(get) if not specified.
+  api_timeout:  # not required. HTTP timeout in seconds. If not given, the C(CLOUDSTACK_TIMEOUT) env variable is considered. As the last option, the value is taken from the ini config file, also see the notes. Fallback value is 10 seconds if not specified.
+  api_region: cloudstack # not required. Name of the ini section in the C(cloustack.ini) file. If not given, the C(CLOUDSTACK_REGION) env variable is considered.
+-  bigip_tunnel:
+    name:  # required. Specifies the name of the tunnel.
+    description:  # not required. Description of the tunnel.
+    profile:  # not required. Specifies the profile to associate with the tunnel for handling traffic. Depending on your selection, other settings become available or disappear. This parameter may not be changed after it is set.
+    key:  # not required. When applied to a GRE tunnel, this value specifies an optional field in the GRE header, used to authenticate the source of the packet. When applied to a VXLAN or Geneve tunnel, this value specifies the Virtual Network Identifier (VNI). When applied to an NVGRE tunnel, this value specifies the Virtual Subnet Identifier (VSID). When creating a new tunnel, if this parameter is supported by the tunnel profile but not specified, the default value is C(0).
+    local_address:  # not required. Specifies the IP address of the local endpoint of the tunnel.
+    remote_address:  # not required. Specifies the IP address of the remote endpoint of the tunnel. For C(dslite), C(fec) (when configuring the FEC tunnel for receiving traffic only), C(v6rd) (configured as a border relay), or C(map), the tunnel must have an unspecified remote address (any).
+    secondary_address:  # not required. Specifies a non-floating IP address for the tunnel, to be used with host-initiated traffic.
+    mtu:  # not required. Specifies the maximum transmission unit (MTU) of the tunnel. When creating a new tunnel, if this parameter is supported by the tunnel profile but not specified, the default value is C(0). The valid range is from C(0) to C(65515).
+    use_pmtu:  # not required. Enables or disables the tunnel to use the PMTU (Path MTU) information provided by ICMP NeedFrag error messages. If C(yes) and the tunnel C(mtu) is set to C(0), the tunnel will use the PMTU information. If C(yes) and the tunnel C(mtu) is fixed to a non-zero value, the tunnel will use the minimum of PMTU and MTU. If C(no), the tunnel will use fixed MTU or calculate its MTU using tunnel encapsulation configurations.
+    tos:  # not required. Specifies the Type of Service (TOS) value to insert in the encapsulating header of transmitted packets. When creating a new tunnel, if this parameter is supported by the tunnel profile but not specified, the default value is C(preserve). When C(preserve), the system copies the TOS value from the inner header to the outer header. You may also specify a numeric value. The possible values are from C(0) to C(255).
+    auto_last_hop: default # not required. choices: default;enabled;disabled. Allows you to configure auto last hop on a per-tunnel basis. When creating a new tunnel, if this parameter is supported by the tunnel profile but not specified, the default is C(default). When C(default), means that the system uses the global auto-lasthop setting to send back the request. When C(enabled), allows the system to send return traffic to the MAC address that transmitted the request, even if the routing table points to a different network or interface. As a result, the system can send return traffic to clients even when there is no matching route.
+    traffic_group:  # not required. Specifies the traffic group to associate with the tunnel. This value cannot be changed after it is set. This is a limitation of BIG-IP.
+    mode: bidirectional # not required. choices: bidirectional;inbound;outbound. Specifies how the tunnel carries traffic. When creating a new tunnel, if this parameter is supported by the tunnel profile but not specified, the default is C(bidirectional). When C(bidirectional), specifies that the tunnel carries both inbound and outbound traffic. When C(inbound), specifies that the tunnel carries only incoming traffic. When C(outbound), specifies that the tunnel carries only outgoing traffic.
+    transparent:  # not required. Specifies that the tunnel operates in transparent mode. When C(yes), you can inspect and manipulate the encapsulated traffic flowing through the BIG-IP system. A transparent tunnel terminates a tunnel while presenting the illusion that the tunnel transits the device unmodified (that is, the BIG-IP system appears as if it were an intermediate router that simply routes IP traffic through the device).
+    partition: Common # not required. Device partition to manage resources on.
+    state: present # not required. choices: present;absent. When C(present), ensures that the tunnel exists. When C(absent), ensures the tunnel is removed.
+    provider:  # not required. A dict object containing connection details.
+    
+
+- name: Install docker with plugins on server
+  apt:
+    name: apt-transport-https, ca-certificates, curl, gnupg2, software-properties-common, ncdu # not required. A list of package names, like C(foo), or package specifier with version, like C(foo=1.0). Name wildcards (fnmatch) like C(apt*) and version wildcards like C(foo=1.0*) are also supported.
+    state: present # not required. choices: absent;build-dep;latest;present;fixed. Indicates the desired package state. C(latest) ensures that the latest version is installed. C(build-dep) ensures the package build dependencies are installed. C(fixed) attempt to correct a system with broken dependencies in place.
+    #docker-ce, docker-compose-plugin,
+
+- name: Ensure that docker-ce is running.
+  service:
+    name: docker # required. Name of the service.
+    state: started # not required. choices: reloaded;restarted;started;stopped. C(started)/C(stopped) are idempotent actions that will not run commands unless necessary. C(restarted) will always bounce the service. C(reloaded) will always reload. B(At least one of state and enabled are required.) Note that reloaded will start the service if it is not already started, even if your chosen init system wouldn't normally.
+    
+  apt:
+    name:  # not required. A list of package names, like C(foo), or package specifier with version, like C(foo=1.0). Name wildcards (fnmatch) like C(apt*) and version wildcards like C(foo=1.0*) are also supported.
+    state: absent # not required. choices: absent;build-dep;latest;present;fixed. Indicates the desired package state. C(latest) ensures that the latest version is installed. C(build-dep) ensures the package build dependencies are installed. C(fixed) attempt to correct a system with broken dependencies in place.
+    update_cache: no # not required. Run the equivalent of C(apt-get update) before the operation. Can be run as part of the package installation or as a separate step.
+    cache_valid_time: 0 # not required. Update the apt cache if its older than the I(cache_valid_time). This option is set in seconds. As of Ansible 2.4, if explicitly set, this sets I(update_cache=yes).
+    purge: no # not required. Will force purging of configuration files if the module state is set to I(absent).
+    default_release:  # not required. Corresponds to the C(-t) option for I(apt) and sets pin priorities
+    install_recommends:  # not required. Corresponds to the C(--no-install-recommends) option for I(apt). C(yes) installs recommended packages.  C(no) does not install recommended packages. By default, Ansible will use the same defaults as the operating system. Suggested packages are never installed.
+    force: no # not required. Corresponds to the C(--force-yes) to I(apt-get) and implies C(allow_unauthenticated: yes) This option will disable checking both the packages' signatures and the certificates of the web servers they are downloaded from. This option *is not* the equivalent of passing the C(-f) flag to I(apt-get) on the command line **This is a destructive operation with the potential to destroy your system, and it should almost never be used.** Please also see C(man apt-get) for more information.
+    allow_unauthenticated: no # not required. Ignore if packages cannot be authenticated. This is useful for bootstrapping environments that manage their own apt-key setup. C(allow_unauthenticated) is only supported with state: I(install)/I(present)
+    upgrade: dist # not required. choices: dist;full;no;safe;yes. If yes or safe, performs an aptitude safe-upgrade. If full, performs an aptitude full-upgrade. If dist, performs an apt-get dist-upgrade. Note: This does not upgrade a specific package, use state=latest for that. Note: Since 2.4, apt-get is used as a fall-back if aptitude is not present.
+    dpkg_options: force-confdef,force-confold # not required. Add dpkg options to apt command. Defaults to '-o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold"' Options should be supplied as comma separated list
+    deb:  # not required. Path to a .deb package on the remote machine. If :// in the path, ansible will attempt to download deb before installing. (Version added 2.1) Requires the C(xz-utils) package to extract the control file of the deb package to install.
+    autoremove: no # not required. If C(yes), remove unused dependency packages for all module states except I(build-dep). It can also be used as the only option. Previous to version 2.4, autoclean was also an alias for autoremove, now it is its own separate command. See documentation for further information.
+    autoclean: no # not required. If C(yes), cleans the local repository of retrieved package files that can no longer be downloaded.
+    policy_rc_d: None # not required. Force the exit code of /usr/sbin/policy-rc.d. For example, if I(policy_rc_d=101) the installed package will not trigger a service start. If /usr/sbin/policy-rc.d already exist, it is backed up and restored after the package installation. If C(null), the /usr/sbin/policy-rc.d isn't created/changed.
+    only_upgrade: no # not required. Only upgrade a package if it is already installed.
+    force_apt_get: no # not required. Force usage of apt-get instead of aptitude
+
+    user:
+      name: ibrahim # required. Name of the user to create, remove or modify.
+      uid: 1000 # not required. Optionally sets the I(UID) of the user.
+      comment:  # not required. Optionally sets the description (aka I(GECOS)) of user account.
+      hidden:  # not required. macOS only, optionally hide the user from the login window and system preferences. The default will be C(yes) if the I(system) option is used.
+      non_unique: False # not required. Optionally when used with the -u option, this option allows to change the user ID to a non-unique value.
+      seuser:  # not required. Optionally sets the seuser type (user_u) on selinux enabled systems.
+      group: ibrahim # not required. Optionally sets the user's primary group (takes a group name).
+      groups: sudo, docker, ssh # not required. List of groups user will be added to. When set to an empty string C(''), the user is removed from all groups except the primary group. Before Ansible 2.3, the only input format allowed was a comma separated string. Mutually exclusive with C(local)
+      append: False # not required. If C(yes), add the user to the groups specified in C(groups). If C(no), user will only be added to the groups specified in C(groups), removing them from all other groups. Mutually exclusive with C(local)
+      shell: bash # not required. Optionally set the user's shell. On macOS, before Ansible 2.5, the default shell for non-system users was C(/usr/bin/false). Since Ansible 2.5, the default shell for non-system users on macOS is C(/bin/bash). On other operating systems, the default shell is determined by the underlying tool being used. See Notes for details.
+      home:  # not required. Optionally set the user's home directory.
+      skeleton:  # not required. Optionally set a home skeleton directory. Requires C(create_home) option!
+      password: passw0rd # not required. Optionally set the user's password to this crypted value. On macOS systems, this value has to be cleartext. Beware of security issues. To create a disabled account on Linux systems, set this to C('!') or C('*'). To create a disabled account on OpenBSD, set this to C('*************'). See U(https://docs.ansible.com/ansible/faq.html#how-do-i-generate-encrypted-passwords-for-the-user-module) for details on various ways to generate these password values.
+      state: present # not required. choices: absent;present. Whether the account should exist or not, taking action if the state is different from what is stated.
+      create_home: True # not required. Unless set to C(no), a home directory will be made for the user when the account is created or if the home directory does not exist. Changed from C(createhome) to C(create_home) in Ansible 2.5.
+      move_home: False # not required. If set to C(yes) when used with C(home: ), attempt to move the user's old home directory to the specified directory if it isn't there already and the old home exists.
+      system: False # not required. When creating an account C(state=present), setting this to C(yes) makes the user a system account. This setting cannot be changed on existing users.
+      force: False # not required. This only affects C(state=absent), it forces removal of the user and associated directories on supported platforms. The behavior is the same as C(userdel --force), check the man page for C(userdel) on your system for details and support. When used with C(generate_ssh_key=yes) this forces an existing key to be overwritten.
+      remove: False # not required. This only affects C(state=absent), it attempts to remove directories associated with the user. The behavior is the same as C(userdel --remove), check the man page for details and support.
+      login_class:  # not required. Optionally sets the user's login class, a feature of most BSD OSs.
+      generate_ssh_key: False # not required. Whether to generate a SSH key for the user in question. This will B(not) overwrite an existing SSH key unless used with C(force=yes).
+      ssh_key_bits: "default set by ssh-keygen" # not required. Optionally specify number of bits in SSH key to create.
+      ssh_key_type: rsa # not required. Optionally specify the type of SSH key to generate. Available SSH key types will depend on implementation present on target host.
+      ssh_key_file:  # not required. Optionally specify the SSH key filename. If this is a relative filename then it will be relative to the user's home directory. This parameter defaults to I(.ssh/id_rsa).
+      ssh_key_comment: "ansible-generated on $HOSTNAME" # not required. Optionally define the comment for the SSH key.
+      ssh_key_passphrase:  # not required. Set a passphrase for the SSH key. If no passphrase is provided, the SSH key will default to having no passphrase.
+      update_password: always # not required. choices: always;on_create. C(always) will update passwords if they differ. C(on_create) will only set the password for newly created users.
+      expires:  # not required. An expiry time for the user in epoch, it will be ignored on platforms that do not support this. Currently supported on GNU/Linux, FreeBSD, and DragonFlyBSD. Since Ansible 2.6 you can remove the expiry time specify a negative value. Currently supported on GNU/Linux and FreeBSD.
+      password_lock:  # not required. Lock the password (usermod -L, pw lock, usermod -C). BUT implementation differs on different platforms, this option does not always mean the user cannot login via other methods. This option does not disable the user, only lock the password. Do not change the password in the same task. Currently supported on Linux, FreeBSD, DragonFlyBSD, NetBSD, OpenBSD.
+      local: False # not required. Forces the use of "local" command alternatives on platforms that implement it. This is useful in environments that use centralized authentification when you want to manipulate the local users (i.e. it uses C(luseradd) instead of C(useradd)). This will check C(/etc/passwd) for an existing account before invoking commands. If the local account database exists somewhere other than C(/etc/passwd), this setting will not work properly. This requires that the above commands as well as C(/etc/passwd) must exist on the target host, otherwise it will be a fatal error. Mutually exclusive with C(groups) and C(append)
+      profile:  # not required. Sets the profile of the user. Does nothing when used with other platforms. Can set multiple profiles using comma separation. To delete all the profiles, use C(profile=''). Currently supported on Illumos/Solaris.
+      authorization:  # not required. Sets the authorization of the user. Does nothing when used with other platforms. Can set multiple authorizations using comma separation. To delete all authorizations, use C(authorization=''). Currently supported on Illumos/Solaris.
+      role:  # not required. Sets the role of the user. Does nothing when used with other platforms. Can set multiple roles using comma separation. To delete all roles, use C(role=''). Currently supported on Illumos/Solaris.

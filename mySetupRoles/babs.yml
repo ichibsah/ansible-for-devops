@@ -1,0 +1,26 @@
+---
+- #hosts: allservers
+  hosts: localhost
+  connection: local
+  #remote_user: ibrahim
+  become: true
+  become_user: root
+  gather_facts: yes
+  roles:
+   - provisions
+   - ssh
+   - apt-packages
+   - dockers
+   #- reboot
+   #- etchotsupdate
+
+- #hosts: a35a0d3
+  hosts: localhost
+  connection: local
+  name: A35a0d3
+  #remote_user: ibrahim
+  become: true
+  become_user: root
+  roles:
+   - dockers
+   - a35a0d3

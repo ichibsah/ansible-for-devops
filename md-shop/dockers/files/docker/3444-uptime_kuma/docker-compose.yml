@@ -1,0 +1,34 @@
+version: '3.3'
+
+services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '10080:80'
+      - '10443:443'
+    links:
+      - uptime-kuma
+    restart: always
+    environment:
+      DOMAINS: 'uptime.sawadogo.xyz -> http://uptime-kuma:3001'
+      STAGE: 'production' # Don't use production until staging works
+      # FORCE_RENEW: 'true'
+      WEBSOCKET: 'true'
+    volumes:
+      - https-portal-data:/var/lib/https-portal
+
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    volumes:
+      - ./docker/uptimekuma:/app/data
+    ports:
+      - 3444:3001
+    restart: always
+
+volumes:
+  https-portal-data:
+
+
+
+# https://github.com/louislam/uptime-kuma/wiki/Reverse-Proxy

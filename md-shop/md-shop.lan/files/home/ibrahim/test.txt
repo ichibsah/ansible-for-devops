@@ -1,0 +1,11 @@
+test
+https://code.visualstudio.com/docs/setup/linux
+https://code.visualstudio.com/docs/containers/docker-compose
+https://code.visualstudio.com/docs/editor/tasks#_custom-tasks
+https://vscode.dev/
+#
+
+python3 -m pip install --upgrade --user ansible
+pip install --upgrade pip
+python3 -m pip install --user argcomplete
+activate-global-python-argcomplete --user
