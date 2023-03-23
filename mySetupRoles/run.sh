@@ -23,6 +23,7 @@ ansible-playbook -b -c local babs.yml
 #ansible-playbook -b --limit provision provisions.yml
 ansible-playbook -b -c local main.yml
 ansible-playbook bashrc.yml # works
+ansible-playbook ansible.yml # works
 #ansible-playbook -bK test.yml
 #ansible-playbook -b main.yml
 #ansible-playbook -b --list-host main.yml
