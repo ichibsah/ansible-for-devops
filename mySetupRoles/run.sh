@@ -22,6 +22,7 @@ ansible-playbook -b --limit allservers main.yml
 ansible-playbook -b -c local babs.yml
 #ansible-playbook -b --limit provision provisions.yml
 ansible-playbook -b -c local main.yml
+#ansible-playbook -bK test.yml
 #ansible-playbook -b main.yml
 #ansible-playbook -b --list-host main.yml
 #ansible-playbook -bk -vvv main.yml

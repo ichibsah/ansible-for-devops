@@ -1,0 +1,14 @@
+- hosts: localhost
+  connection: local
+  become: true
+  become_user: ibrahim
+  roles:
+    - bashrc
+    #
+- hosts: allservers
+  remote_user: ibrahim
+  become: true
+  become_user: root
+  gather_facts: true
+  roles:
+    - bashrc

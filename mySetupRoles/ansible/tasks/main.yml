@@ -1,0 +1,19 @@
+---
+# tasks file for ansible
+- name: Install pip3
+  apt:
+    name: 
+      - pip
+    state: present
+    
+- name: Remove apt ansible
+  apt:
+    name: 
+      - ansible
+    state: absent
+
+- name: install ansible using pip3
+  pip:
+    name:  
+      - ansible
+    state: present
