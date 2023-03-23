@@ -151,7 +151,7 @@ alias apv='ansible-playbook --vault-id ~/.ssh/.jenkins-vault.pw'
 #alias ansible-playbook='. ./environment.sh && ansible-playbook'
 alias azlogin='az login --use-device-code'
 alias a=alias d=ls ds="ls -al" drt="ls -lart" g="grep -i --color=yes" gc="grep --color=yes" 
-alias e=echo l=less t="type -a" ..="cd .." i="sudo su - intershop" r="su -m root" j="sudo su - jenkins" 
+alias e=echo l=less t="type -a" ..="cd .." r="su -m root" 
 alias md=mkdir rd=rmdir dfh="df -h" ll="ls -l" la="ls -la"
 alias dmesg="dmesg -w -H"
 alias tailsyslog="tail -f /var/log/syslog"
@@ -168,7 +168,7 @@ alias agrada='echo '\''that bitch'\'''
 alias ari='ansible-galaxy role init'
 alias vulscan='nmap -sV --script vulscan'
 alias rmv='rsync -avz --remove-source-files'
-alias update='apt update && apt upgrade -y && docker system prune -af'
+alias update='sudo apt update && sudo apt upgrade -y && docker system prune -af'
 #
 #kubectl aliases
 [ -f ~/opt/kubectx/.kubectl_aliases ] && source \

@@ -8,7 +8,7 @@
 - hosts: allservers
   remote_user: ibrahim
   become: true
-  become_user: root
+  become_user: ibrahim
   gather_facts: true
   roles:
     - bashrc
