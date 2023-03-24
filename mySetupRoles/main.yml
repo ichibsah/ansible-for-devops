@@ -9,7 +9,7 @@
    - ssh
    - dockers
 
-  - hosts: cloud
+- hosts: cloud
   remote_user: ibrahim
   become: true
   become_user: root

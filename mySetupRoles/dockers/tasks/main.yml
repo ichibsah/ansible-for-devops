@@ -10,7 +10,7 @@
     mode: 0744
   when: ansible_os_family == 'Debian' and ansible_hostname != 'virthost01' or ansible_hostname != '4a999ff'
 
-- name: copy default docker files to cloud group
+- name: copy default docker files to only a35a0d3
   copy:
     src: "files/a35a0d3/docker"
     dest: "/opt/"
