@@ -6,7 +6,7 @@
       - pip
     state: present
   become: yes
-  when:  ansible_hostname == 'virthost01' or ansible_hostname == '4a999ff'
+  when:  ansible_hostname == 'virthost01' # or ansible_hostname == '4a999ff'
     
 - name: Remove apt ansible
   apt:

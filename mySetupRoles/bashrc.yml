@@ -12,3 +12,5 @@
   gather_facts: true
   roles:
     - bashrc
+
+# complete and working

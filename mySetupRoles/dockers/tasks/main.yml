@@ -9,14 +9,24 @@
 #     builder_cache: True # not required. Whether to prune the builder cache. Requires version 3.3.0 of the Docker SDK for Python or newer.
 #     #docker_host: 127.0.0.1
 #     tls_hostname: localhost
-- name: copy docker files
+- name: copy default docker files to cloud group
   copy:
     src: "files/docker"
     dest: "/opt/"
     owner: ibrahim
     group: ibrahim
     mode: 0744
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family == 'Debian' and ansible_hostname != 'virthost01' or ansible_hostname != '4a999ff'
+
+- name: copy default docker files to cloud group
+  copy:
+    src: "files/a35a0d3/docker"
+    dest: "/opt/"
+    owner: ibrahim
+    group: ibrahim
+    mode: 0744
+  when: ansible_os_family == 'Debian' and ansible_hostname == 'a35a0d3'
+
 
 # - name: start docker containers.
 #   ansible.builtin.shell: somescript.sh >> somelog.txt

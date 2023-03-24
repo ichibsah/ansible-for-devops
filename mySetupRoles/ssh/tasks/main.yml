@@ -1,7 +1,7 @@
 ---
 # tasks file for ssh
 # Use secure and encrypted communication.
-- name: Allow sshd to listen on tcp port 2849.
+- name: Allow sshd to listen on tcp port 22.
   seport:
     ports: 22
     proto: tcp

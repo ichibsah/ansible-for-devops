@@ -21,6 +21,7 @@
     line: 'ibrahim ALL=(ALL) NOPASSWD: ALL'
     state: present
     validate: 'visudo -cf %s'
+  when: ansible_os_family == 'Debian' and ansible_hostname != 'virthost01'
 
 - name: Copy default user's home files in place.
   copy:
@@ -29,7 +30,7 @@
     owner: ibrahim
     group: ibrahim
     mode: 0644
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family == 'Debian' and ansible_hostname != 'virthost01'
 
 # - name: Install gpg package on server
 #   apt:
