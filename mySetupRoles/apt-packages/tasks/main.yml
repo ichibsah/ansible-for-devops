@@ -21,12 +21,6 @@
     update_cache: yes # not required. Run the equivalent of C(apt-get update) when a change occurs.  Cache updates are run after making changes.
     validate_certs: yes 
 
-- name: Install gpg before docker on server
-  apt:
-    name: 
-      - gpg
-    state: present
-
 - name: Install packages on server
   apt:
     name: 

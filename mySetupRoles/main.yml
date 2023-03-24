@@ -7,16 +7,12 @@
   roles:
    - provisions
    - ssh
-   - apt-packages
    - dockers
-  # - reboot
-  # - etchotsupdate
 
-- hosts: a35a0d3
-  name: A35a0d3
+  - hosts: cloud
   remote_user: ibrahim
   become: true
   become_user: root
+  gather_facts: true
   roles:
-  # - dockers
-  # - a35a0d3
+   - apt-packages # 4a999ff should not be part of this hosts
