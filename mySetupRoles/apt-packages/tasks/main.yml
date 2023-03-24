@@ -35,6 +35,13 @@
       - docker-compose-plugin
     state: present
 
+- name: Install rsync on only a35a0d3
+  apt:
+    name: 
+      - rsync
+    state: present
+  when: ansible_hostname == 'a35a0d3'
+
 - name: Ensure Demons are running.
   service: "name={{ item }} state=started enabled=yes"
   with_items: 
