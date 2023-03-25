@@ -2,6 +2,8 @@
   connection: local
   become: true
   become_user: ibrahim
+  vars_files:
+    - ansible-vault.yml 
   roles:
     - ansible
     #
@@ -10,7 +12,9 @@
   remote_user: ibrahim
   become: true
   become_user: ibrahim
-  gather_facts: true
+  #gather_facts: true
+  vars_files:
+    - ansible-vault.yml 
   roles:
     - ansible
 

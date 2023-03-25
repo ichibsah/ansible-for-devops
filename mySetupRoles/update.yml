@@ -3,14 +3,28 @@
 - hosts: allservers
   remote_user: ibrahim
   become: true
-  gather_facts: true
+  #gather_facts: true
+
+  vars_files:
+    - ansible-vault.yml 
+
+  # vars:
+  #   #ansible_become_pass: '{{ a999ff_become_pass }}'
+
   roles:
     - update
 
 - hosts: localhost
   connection: local
   become: true
+  #gather_facts: true
+
+  vars_files:
+    - ansible-vault.yml
+  vars:
+    ansible_become_pass: '{{ localhost_become_pass }}'
+
   roles:
     - update
     #
-# complete and
+# complete and works. i need to add the become passwd to vault

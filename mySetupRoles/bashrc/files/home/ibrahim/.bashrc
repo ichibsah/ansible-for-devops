@@ -183,6 +183,7 @@ export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 export PATH=/home/isawadogo/opt/kubectx:$PATH
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/snap/fluxctl/162/bin
+export EDITOR=nano
 #
 #echo "type your AZURE_PASSWORD:"
 #read -s AZURE_PASSWORD

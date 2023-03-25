@@ -1,2 +1,13 @@
 ---
-# vars file for update
+# # vars file for update
+
+#   vars_files:
+#     - ~/.ansible/my_vault.yml 
+
+#   vars:
+#     ansible_become_pass: '{{ su_password }}'
+
+# #vars_files:
+#   - ansible-vault.yml
+# vars:
+#   ansible_become_pass: '{{ localhost_become_pass }}'
