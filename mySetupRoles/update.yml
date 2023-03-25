@@ -1,15 +1,16 @@
 ---
 #
 - hosts: allservers
-  remote_user: ibrahim
-  become: true
-  #gather_facts: true
+  #remote_user: ibrahim
+  become_user: root
+  #become: true # required but breaks for 4a999ff
+  #gather_facts: true # egal changes nothing significant for now
 
   vars_files:
     - ansible-vault.yml 
 
-  # vars:
-  #   #ansible_become_pass: '{{ a999ff_become_pass }}'
+  vars:
+    ansible_become_pass: '{{ a999ff_become_pass }}'
 
   roles:
     - update
