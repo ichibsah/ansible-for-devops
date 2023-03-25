@@ -1,0 +1,16 @@
+---
+#
+- hosts: allservers
+  remote_user: ibrahim
+  become: true
+  gather_facts: true
+  roles:
+    - update
+
+- hosts: localhost
+  connection: local
+  become: true
+  roles:
+    - update
+    #
+# complete and

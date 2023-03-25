@@ -17,13 +17,14 @@
 #ansible-playbook -bk -vvv firsttime.yml > firsttime.log
 #ansible-playbook -bk firsttime.yml
 #ansible-playbook -b -vvv main.yml > main.log
-ansible-playbook -b --limit provision provisions.yml
-ansible-playbook -b --limit allservers main.yml
-ansible-playbook -b -c local babs.yml
-#ansible-playbook -b --limit provision provisions.yml
-ansible-playbook -b -c local main.yml
-ansible-playbook bashrc.yml # works
-ansible-playbook ansible.yml # works
+# ansible-playbook -b --limit provision provisions.yml
+# ansible-playbook -b --limit allservers main.yml
+# ansible-playbook -b -c local babs.yml
+# #ansible-playbook -b --limit provision provisions.yml
+# ansible-playbook -b -c local main.yml
+# ansible-playbook bashrc.yml # works
+# ansible-playbook ansible.yml # works
+ansible-playbook update.yml # works
 #ansible-playbook -bK test.yml
 #ansible-playbook -b main.yml
 #ansible-playbook -b --list-host main.yml
