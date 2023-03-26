@@ -22,7 +22,8 @@ ansible-inventory --list
 # ansible-playbook -b -c local babs.yml
 # #ansible-playbook -b --limit provision provisions.yml
 # ansible-playbook -b -c local main.yml
-ansible-playbook -b --limit provision provisions.yml # works
+###ansible-playbook -b --limit provision provisions.yml # works
+ansible-playbook provisions.yml # works
 ansible-playbook main.yml # works
 ansible-playbook bashrc.yml # works
 ansible-playbook ansible.yml # works
