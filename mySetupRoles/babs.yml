@@ -3,7 +3,7 @@
   hosts: localhost
   connection: local
   #remote_user: ibrahim
-  become: true
+  ##become: true
   become_user: root
   #gather_facts: yes
   roles:
@@ -19,7 +19,7 @@
   connection: local
   name: A35a0d3
   #remote_user: ibrahim
-  become: true
+  ##become: true
   become_user: root
   roles:
    - dockers

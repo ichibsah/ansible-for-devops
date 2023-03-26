@@ -1,7 +1,7 @@
 - name: STARTING bashrc.yml - localhost
   hosts: localhost
   connection: local
-  become: true
+  ##become: true
   become_user: ibrahim
   vars_files:
     - ansible-vault.yml 
@@ -11,7 +11,7 @@
 - name: STARTING bashrc.yml - allservers
   hosts: allservers
   remote_user: ibrahim
-  become: true
+  ##become: true
   become_user: ibrahim
   #gather_facts: true
   vars_files:

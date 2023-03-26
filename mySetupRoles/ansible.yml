@@ -1,6 +1,6 @@
 - hosts: localhost
   connection: local
-  become: true
+  ##become: true
   become_user: ibrahim
   vars_files:
     - ansible-vault.yml 
@@ -10,7 +10,7 @@
 # dont install ansible on all servers. just on virthost and run from there
 - hosts: allservers
   remote_user: ibrahim
-  become: true
+  ##become: true
   become_user: ibrahim
   #gather_facts: true
   vars_files:

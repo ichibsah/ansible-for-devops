@@ -1,7 +1,7 @@
 ---
 - hosts: allservers
   remote_user: ibrahim
-  become: true
+  ##become: true
   become_user: root
   #gather_facts: true
   vars_files:
@@ -13,7 +13,7 @@
 
 - hosts: cloud
   remote_user: ibrahim
-  become: true
+  ##become: true
   become_user: root
   #gather_facts: true
   vars_files:
