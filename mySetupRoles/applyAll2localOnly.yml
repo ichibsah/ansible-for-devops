@@ -1,0 +1,18 @@
+---
+#
+- hosts: local
+  connection: local
+
+  vars_files:
+  - ansible-vault.yml
+
+  roles:
+  - provisions
+  - ssh
+  - ansible
+  - apt-packages
+  - bashrc
+  - dockers
+  - update
+  #
+# complete and not tested.
