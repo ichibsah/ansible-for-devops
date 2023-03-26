@@ -1,11 +1,7 @@
 ---
-- hosts: local
+- name: my sandbox here...
+  hosts: local
   connection: local
-  ##become: true
-  #gather_facts: true
-
-  vars_files:
-    - ansible-vault.yml
 
   roles:
     - update
