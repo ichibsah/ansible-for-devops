@@ -3,6 +3,20 @@
 # Multi-server tests for the orchestration example.
 #set -e
 ansible-inventory --list
+#
+ansible-playbook provisions.yml # works
+ansible-playbook main.yml # works
+ansible-playbook bashrc.yml # works
+ansible-playbook ansible.yml # works
+ansible-playbook update.yml # works
+#ansible-playbook -bK test.yml
+#ansible-playbook -b main.yml
+#ansible-playbook -b --list-host main.yml
+#ansible-playbook -bk -vvv main.yml
+#ansible-playbook -bk main.yml
+#ansible-playbook -bK main.yml
+#ansible-playbook localrun.yml --connection=local
+#
 # Other commands from the book.
 #ansible multi -b -m apt -a "name=chrony state=present"
 #ansible multi -b -K -m apt -a "name=chrony state=present"
@@ -23,15 +37,3 @@ ansible-inventory --list
 # #ansible-playbook -b --limit provision provisions.yml
 # ansible-playbook -b -c local main.yml
 ###ansible-playbook -b --limit provision provisions.yml # works
-ansible-playbook provisions.yml # works
-ansible-playbook main.yml # works
-ansible-playbook bashrc.yml # works
-ansible-playbook ansible.yml # works
-ansible-playbook update.yml # works
-#ansible-playbook -bK test.yml
-#ansible-playbook -b main.yml
-#ansible-playbook -b --list-host main.yml
-#ansible-playbook -bk -vvv main.yml
-#ansible-playbook -bk main.yml
-#ansible-playbook -bK main.yml
-#ansible-playbook localrun.yml --connection=local

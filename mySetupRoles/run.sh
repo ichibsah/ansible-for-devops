@@ -22,10 +22,10 @@ ansible-inventory --list
 # ansible-playbook -b -c local babs.yml
 # #ansible-playbook -b --limit provision provisions.yml
 # ansible-playbook -b -c local main.yml
-# ansible-playbook bashrc.yml # works
+ansible-playbook bashrc.yml # works
 # ansible-playbook ansible.yml # works
 #ansible-playbook --vault-id ~/.ssh/.ansible-vault.pw update.yml # works
-ansible-playbook update.yml # works
+#ansible-playbook update.yml # works
 #ansible-playbook -bK test.yml
 #ansible-playbook -b main.yml
 #ansible-playbook -b --list-host main.yml
