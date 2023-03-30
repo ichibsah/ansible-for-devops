@@ -4,8 +4,6 @@
   #remote_user: ibrahim
   become: yes
   become_user: root
-  vars_files:
-    - ansible-vault.yml 
   roles:
     - provisions
     - ssh

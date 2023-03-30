@@ -5,6 +5,7 @@
 ansible-inventory --list
 #
 ansible-playbook provisions.yml # works
+ansible-playbook hostname.yml # works
 ansible-playbook main.yml # works
 ansible-playbook bashrc.yml # works
 ansible-playbook ansible.yml # works
