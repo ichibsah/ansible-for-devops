@@ -4,4 +4,14 @@ hostname_additional_hosts:
     hostname_short: "4a999ff"
   # - ip_address: 5.6.7.8
   #   hostname: b.example.com
-  #   hostname_short: b 
+  #   hostname_short: b
+#
+apt_started_services_list:                # Ensure Services are running.
+  - chronyd
+#
+apt_default_packages:                     # Install Default Packages on All Host (overite default installs)
+- chrony
+- ncdu
+#
+apt_host_packages_list:                   # Install Host Specific Packages
+- rsync

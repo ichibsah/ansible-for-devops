@@ -1,19 +1,14 @@
 ---
-- name: my sandbox here...
-  hosts: allservers
-  #hosts: local
-  #connection: local
-
-  tasks:
-    - name: What is my inventory_hostname
-      debug: var={{inventory_hostname}}
-
-    - name: What is my ansible_hostname
-      debug: var={{ansible_hostname}}
-    #
+- name: My sandbox here...
+  hosts: sandbox
   roles:
-    #- provisions
-    #- ssh
-    - hostname
+  - apt
+#
+#
+- name: My sandbox here...
+  hosts: local
+  connection: local
+  roles:
+    - apt
 
 # complete and works.

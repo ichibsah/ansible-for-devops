@@ -1,22 +1,17 @@
 - name: STARTING bashrc.yml - localhost
   hosts: localhost
   connection: local
-  ##become: true
   become_user: ibrahim
   vars_files:
     - ansible-vault.yml 
   roles:
-    - bashrc
+    - apt
     #
 - name: STARTING bashrc.yml - allservers
   hosts: allservers
   remote_user: ibrahim
-  ##become: true
   become_user: ibrahim
-  #gather_facts: true
-  vars_files:
-    - ansible-vault.yml 
   roles:
-    - bashrc
+    - apt
 
 # complete and working

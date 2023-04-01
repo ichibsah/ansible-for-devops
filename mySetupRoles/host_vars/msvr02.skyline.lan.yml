@@ -2,3 +2,6 @@ hostname_additional_hosts:
   - ip_address: 192.168.14.32
     hostname: msvr02.skyline.lan
     hostname_short: msvr02
+  #
+apt_host_packages_list:                   # Install Host Specific Packages
+- rsync    

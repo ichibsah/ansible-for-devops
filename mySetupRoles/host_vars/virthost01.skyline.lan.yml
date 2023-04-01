@@ -8,9 +8,15 @@ hostname_additional_hosts:
   - ip_address: 192.168.8.254
     hostname: virthost01.skyline.lan
     hostname_short: virthost01
-
-
-
+  #
+apt_host_packages_list:                   # Install Host Specific Packages
+- rsync
+- pip
+#
+apt_remove_package_lists:                 # Remove APT package lists
+#
+pip_install_package_lists:                # Install packages using PIP
+- ansible
 
 
 

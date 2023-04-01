@@ -1,0 +1,17 @@
+- name: STARTING bashrc.yml - localhost
+  hosts: localhost
+  connection: local
+  become_user: ibrahim
+  vars_files:
+    - ansible-vault.yml 
+  roles:
+    - bashrc
+    #
+- name: STARTING bashrc.yml - allservers
+  hosts: allservers
+  remote_user: ibrahim
+  become_user: ibrahim
+  roles:
+    - bashrc
+
+# complete and working
