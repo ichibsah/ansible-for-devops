@@ -1,17 +1,15 @@
-- name: STARTING bashrc.yml - localhost
-  hosts: localhost
-  connection: local
-  become_user: ibrahim
-  vars_files:
-    - ansible-vault.yml 
-  roles:
-    - bashrc
-    #
-- name: STARTING bashrc.yml - allservers
+---
+- name: BASHRC | Initialisation
   hosts: allservers
   remote_user: ibrahim
-  become_user: ibrahim
+  become: false
   roles:
     - bashrc
 
-# complete and working
+- name: BASHRC | Initialisation - LOCALHOST
+  hosts: local
+  connection: local
+  remote_user: ibrahim
+  become: false
+  roles:
+    - bashrc

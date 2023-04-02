@@ -1,6 +1,6 @@
 ---
 # tasks file for provisions
-- name: PROVISIONS | Add/Update a deployment user.
+- name: PROVISIONS | Add/Update deployment user.
   user:
     name: ibrahim # required. Name of the user to create, remove or modify.
     uid: 1000 # not required. Optionally sets the I(UID) of the user.

@@ -16,7 +16,7 @@
   become: true
   become_user: root
   roles:
-    #- hostname
+    #- hostname # TODO fix the error here
   
   # complete, tested and working
   
