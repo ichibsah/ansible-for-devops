@@ -5,3 +5,7 @@ hostname_additional_hosts:
   #
 apt_host_packages_list:                   # Install Host Specific Packages
 - rsync    
+#
+prvs_copy_home: no                # Copy default user's home files in place
+#
+dkr_copy_def_files: no            # Copy default docker files to target server

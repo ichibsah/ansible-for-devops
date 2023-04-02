@@ -1,14 +1,6 @@
 ---
 # tasks file for provisions
-- name: Update apt cache if needed
-  apt: 
-    update_cache: yes
-    cache_valid_time: 3600
-
-#- block:
-#  name: 
-# User account configuration.
-- name: Add a deployment user.
+- name: PROVISIONS | Add/Update a deployment user.
   user:
     name: ibrahim # required. Name of the user to create, remove or modify.
     uid: 1000 # not required. Optionally sets the I(UID) of the user.
@@ -19,7 +11,7 @@
     state: present # not required. choices: absent;present. Whether the account should exist or not, taking action if the state is different from what is stated.
             
 # Disable root login and use `sudo`.
-- name: Add sudo rights for deployment user.
+- name: PROVISIONS | Add sudo rights for deployment user.
   lineinfile:
     dest: /etc/sudoers
     regexp: '^ibrahim'
@@ -28,18 +20,11 @@
     validate: 'visudo -cf %s'
   when: ansible_os_family == 'Debian' and ansible_hostname != 'virthost01'
 
-- name: Copy default user's home files in place.
+- name: PROVISIONS | Copy deployment user's home files in place.
   copy:
     src: "files/home/ibrahim"
     dest: "/home"
     owner: ibrahim
     group: ibrahim
     mode: 0644
-  when: ansible_os_family == 'Debian' and ansible_hostname != 'virthost01'
-
-# - name: Install gpg package on server
-#   apt:
-#     name: 
-#     - gpg
-#   state: present
- 
+  when: ansible_os_family == 'Debian' and prvs_copy_home

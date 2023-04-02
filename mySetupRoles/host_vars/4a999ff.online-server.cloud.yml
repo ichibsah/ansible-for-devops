@@ -15,3 +15,5 @@ apt_default_packages:                     # Install Default Packages on All Host
 #
 apt_host_packages_list:                   # Install Host Specific Packages
 - rsync
+#
+dkr_copy_def_files: no                    # Copy default docker files to target server

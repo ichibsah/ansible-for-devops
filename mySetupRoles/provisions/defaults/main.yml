@@ -1,2 +1,4 @@
 ---
 # defaults file for provisions
+#
+prvs_copy_home: yes             # Copy default user's home files in place

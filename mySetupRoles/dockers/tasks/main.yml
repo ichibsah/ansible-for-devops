@@ -1,20 +1,19 @@
 ---
 # tasks file for dockers
-
-- name: copy default docker files to cloud group
+- name: DOCKERS | Copy default docker files to "{{ansible_hostname}}"
   copy:
     src: "files/docker"
     dest: "/opt/"
     owner: ibrahim
     group: ibrahim
     mode: 0744
-  when: ansible_os_family == 'Debian' and ansible_hostname != 'virthost01' or ansible_hostname != '4a999ff'
+  when: ansible_os_family == 'Debian' and dkr_copy_def_files # ansible_hostname != 'virthost01' or ansible_hostname != '4a999ff'
 
-- name: copy default docker files to only a35a0d3
+- name: DOCKERS | Copy extended docker files to target host
   copy:
     src: "files/a35a0d3/docker"
     dest: "/opt/"
     owner: ibrahim
     group: ibrahim
     mode: 0744
-  when: ansible_os_family == 'Debian' and ansible_hostname == 'a35a0d3'
+  when: ansible_os_family == 'Debian' and dkr_copy_etx_files #ansible_hostname == 'a35a0d3'

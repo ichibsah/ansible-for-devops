@@ -8,3 +8,5 @@ hostname_additional_hosts:
   #
 apt_host_packages_list:                   # Install Host Specific Packages
 - rsync
+#
+dkr_copy_etx_files: yes                   # # Copy extended docker files to target host

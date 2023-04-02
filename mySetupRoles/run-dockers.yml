@@ -1,13 +1,14 @@
-- name: APT | STARTING run-apt.yml
+---
+- name: DOCEKERS | Initialisation
   hosts: allservers
   # remote_user: root
   remote_user: ibrahim
   become: true
   become_user: root
   roles:
-    - apt
+    - dockers
 
-- name: APT | STARTING run-apt.yml - LOCALHOST
+- name: DOCEKERS | Initialisation - LOCALHOST
   hosts: local
   connection: local
   # remote_user: root
@@ -15,6 +16,6 @@
   become: true
   become_user: root
   roles:
-    - apt
+    - dockers
 
-# complete and working
+# complete, tested and working

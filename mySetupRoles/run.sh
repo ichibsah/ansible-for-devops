@@ -2,7 +2,7 @@
 #
 # Multi-server tests for the orchestration example.
 #set -e
-ansible-inventory --list
+ansible-inventory -y --list
 # Other commands from the book.
 #ansible multi -b -m apt -a "name=chrony state=present"
 #ansible multi -b -K -m apt -a "name=chrony state=present"

@@ -17,10 +17,13 @@ apt_remove_package_lists:                 # Remove APT package lists
 #
 pip_install_package_lists:                # Install packages using PIP
 - ansible
-
-
-
-
+- passlib
+#
+ansible_become_pass: '{{ localhost_become_pass }}'
+#
+prvs_copy_home: no              # Copy default user's home files in place
+#
+dkr_copy_def_files: no          # Copy default docker files to target server
 
 # 127.0.0.1       localhost
 # 127.0.1.1       virthost01.skyline.lan  virthost01
