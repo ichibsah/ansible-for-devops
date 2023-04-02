@@ -4,13 +4,14 @@
 #set -e
 ansible-inventory --list
 #
-ansible-playbook run-provisions.yml # works
-ansible-playbook run-hostname.yml # works
-ansible-playbook run-apt.yml # works
 ansible-playbook run-main.yml # works
-ansible-playbook run-bashrc.yml # works
-ansible-playbook run-ansible.yml # works
-ansible-playbook run-update.yml # works
+# ansible-playbook run-provisions.yml # works
+# ansible-playbook run-hostname.yml # works
+# ansible-playbook run-apt.yml # works
+# ansible-playbook run-main.yml # works
+# ansible-playbook run-bashrc.yml # works
+# ansible-playbook run-ansible.yml # works
+# ansible-playbook run-update.yml # works
 #ansible-playbook -bK test.yml
 #ansible-playbook -b main.yml
 #ansible-playbook -b --list-host main.yml

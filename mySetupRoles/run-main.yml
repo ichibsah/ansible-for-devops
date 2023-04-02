@@ -11,8 +11,8 @@
 - name: MAIN | Play run-bashrc.yml
   import_playbook: run-bashrc.yml
 
-#- name: MAIN | Play run-apt.yml
-#  import_playbook: run-apt.yml
+- name: MAIN | Play run-apt.yml
+  import_playbook: run-apt.yml
 
 
 

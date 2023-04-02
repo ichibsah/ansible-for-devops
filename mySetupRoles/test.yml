@@ -1,14 +1,3 @@
----
-- name: My sandbox here...
-  hosts: sandbox
-  roles:
-  - apt
-#
-#
-- name: My sandbox here...
-  hosts: local
-  connection: local
-  roles:
-    - apt
-
-# complete and works.
+- name: MAIN | Play run-apt.yml
+  import_playbook: run-apt.yml
+  
