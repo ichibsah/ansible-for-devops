@@ -1,15 +1,22 @@
 ---
-- name: STARTING Hostname change
+- name: HOSTNAME | Initialisation
   hosts: allservers
-
-  tasks:
-    - name: What is my inventory_hostname
-      debug: var={{inventory_hostname}}
-
-    - name: What is my ansible_hostname
-      debug: var={{ansible_hostname}}
-    #
+  # remote_user: root
+  remote_user: ibrahim
+  become: true
+  become_user: root
   roles:
     - hostname
-
-# complete and works.
+ 
+- name: HOSTNAME | Initialisation - LOCALHOST
+  hosts: local
+  connection: local
+  # remote_user: root
+  remote_user: ibrahim
+  become: true
+  become_user: root
+  roles:
+    #- hostname
+  
+  # complete, tested and working
+  

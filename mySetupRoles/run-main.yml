@@ -3,6 +3,9 @@
   import_playbook: run-provisions.yml
 
 - name: MAIN | Play run-dockers.yml
+  import_playbook: run-hostname.yml
+
+- name: MAIN | Play run-dockers.yml
   import_playbook: run-dockers.yml
 
 - name: MAIN | Play run-apt.yml
