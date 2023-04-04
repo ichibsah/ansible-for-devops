@@ -26,7 +26,9 @@ prvs_copy_home: no              # Copy default user's home files in place
 dkr_copy_def_files: no          # Copy default docker files to target server
 #
 apt_install_utilities_base: yes           # Install utilities packages default settings
-
+#
+crntb_activate_cronjobs: yes
+#
 # 127.0.0.1       localhost
 # 127.0.1.1       virthost01.skyline.lan  virthost01
 

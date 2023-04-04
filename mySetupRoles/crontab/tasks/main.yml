@@ -1,2 +1,41 @@
 ---
 # tasks file for crontab
+- name: Crontab | copy bashrc file
+  copy:
+    src: "files/root/"
+    dest: "/"
+    owner: root
+    group: root
+    mode: 0740
+  when: ansible_os_family == 'Debian' and crntb_activate_cronjobs
+
+- name: Crontab | cronjob 1min.sh
+  cron:
+    name: "Starting 1 minute job - 1min.sh"
+    user: root
+    job:  "/root/1min.sh > /dev/null 2>&1"
+    state: present
+    backup: False 
+    minute: "*/1" # Minute when the job should run ( 0-59, *, */2, etc )
+    hour: "*" # Hour when the job should run ( 0-23, *, */2, etc )
+    day: "*" # Day of the month the job should run ( 1-31, *, */2, etc )
+    month: "*" # Month of the year the job should run ( 1-12, *, */2, etc )
+    weekday: "*" # Day of the week that the job should run ( 0-6 for Sunday-Saturday, *, etc )
+    disabled: False # If the job should be disabled (commented out) in the crontab. Only has effect if C(state=present).
+  when: ansible_os_family == 'Debian' and crntb_activate_cronjobs
+
+- name: Crontab | cronjob ansible.sh
+  cron:
+    name: "Starting CI/CD cronjob ansible.sh"
+    user: root
+    job: "/root/ansible.sh > /dev/null 2>&1"
+    state: present
+    backup: False 
+    minute: "*/2" # Minute when the job should run ( 0-59, *, */2, etc )
+    hour: "*" # Hour when the job should run ( 0-23, *, */2, etc )
+    day: "*" # Day of the month the job should run ( 1-31, *, */2, etc )
+    month: "*" # Month of the year the job should run ( 1-12, *, */2, etc )
+    weekday: "*" # Day of the week that the job should run ( 0-6 for Sunday-Saturday, *, etc )
+    disabled: False # If the job should be disabled (commented out) in the crontab. Only has effect if C(state=present).
+  when: ansible_os_family == 'Debian' and crntb_activate_cronjobs
+

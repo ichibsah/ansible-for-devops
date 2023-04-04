@@ -1,5 +1,5 @@
 ---
-- name: HOSTNAME | Initialisation
+- name: CRONTAB | Initialisation
   hosts: allservers
   # remote_user: root
   remote_user: ibrahim
@@ -8,7 +8,7 @@
   roles:
     - crontab
 
-- name: HOSTNAME | Initialisation - LOCALHOST
+- name: CRONTAB | Initialisation - LOCALHOST
   hosts: local
   connection: local
   # remote_user: root

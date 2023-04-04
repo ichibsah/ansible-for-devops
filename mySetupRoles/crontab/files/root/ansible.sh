@@ -1,5 +1,8 @@
 #!/bin/bash
 
+FileName=myansible-`date +%F`
+LOG=./logs/$FileName
+
 mkdir -p /home/ibrahim/sandbox-ansible/
 
 # Set the repository URL and branch
@@ -33,7 +36,7 @@ if [ -d "$REPO_DIR" ]; then
     echo "Pull successful"
     cd mySetupRoles
     pwd
-    bash ./md-shop.sh
+    bash ./md-shop.sh >> $LOG
   else
     # Print a message to confirm that there were no updates
     echo "Already up to date - no need to start ansible"
@@ -48,7 +51,7 @@ else
   cd "$REPO_DIR"
   cd mySetupRoles
   pwd
-  bash ./md-shop.sh
+  bash ./md-shop.sh >> $LOG
 fi
 
 #/**************/
