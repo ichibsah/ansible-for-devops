@@ -170,6 +170,7 @@ alias ari='ansible-galaxy role init'
 alias vulscan='nmap -sV --script vulscan'
 alias rmv='rsync -avz --remove-source-files'
 alias update='sudo apt update && sudo apt upgrade -y && docker system prune -af'
+alias ift='sudo iftop -PFG -i eno1'
 #
 #kubectl aliases
 [ -f ~/opt/kubectx/.kubectl_aliases ] && source \
