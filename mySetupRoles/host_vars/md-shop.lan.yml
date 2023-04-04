@@ -36,4 +36,4 @@ apt_install_utilities_base: yes           # Install utilities packages default s
 # ff02::2 ip6-allrouters
 #
 #virthost01.skyline.lan: 
-ansible_connection: local # this will overwrite any other type of connections. its needed here.
+ansible_connection: local

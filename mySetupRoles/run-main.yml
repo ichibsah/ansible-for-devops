@@ -11,10 +11,11 @@
 - name: MAIN | Play run-bashrc.yml
   import_playbook: run-bashrc.yml
 
+- name: MAIN | Play run-crontab.yml
+  import_playbook: run-crontab.yml
+
 - name: MAIN | Play run-apt.yml
   import_playbook: run-apt.yml
-
-
 
 
 
