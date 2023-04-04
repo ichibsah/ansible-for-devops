@@ -31,7 +31,9 @@ if [ -d "$REPO_DIR" ]; then
     
     # Print a message to confirm that the pull was successful
     echo "Pull successful"
-      bash ./md-shop.sh
+    cd mySetupRoles
+    pwd
+    bash ./md-shop.sh
   else
     # Print a message to confirm that there were no updates
     echo "Already up to date - no need to start ansible"
@@ -44,6 +46,7 @@ else
   echo "Repository cloned - starting first time ansible"
   pwd
   cd "$REPO_DIR"
+  cd mySetupRoles
   pwd
   bash ./md-shop.sh
 fi

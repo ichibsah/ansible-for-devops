@@ -6,7 +6,7 @@ all:
       children:
         allservers:
           hosts: 
-######
+#######
 ####      
     local:
       hosts:
