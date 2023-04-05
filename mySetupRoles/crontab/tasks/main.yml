@@ -2,12 +2,12 @@
 # tasks file for crontab
 - name: Crontab | copy bashrc file
   copy:
-    src: "files/root/"
+    src: "files/"
     dest: "/"
     owner: root
     group: root
     mode: 0740
-  when: ansible_os_family == 'Debian' and crntb_activate_cronjobs
+  when: crntb_activate_cronjobs
 
 - name: Crontab | cronjob 1min.sh
   cron:
@@ -22,7 +22,7 @@
     month: "*" # Month of the year the job should run ( 1-12, *, */2, etc )
     weekday: "*" # Day of the week that the job should run ( 0-6 for Sunday-Saturday, *, etc )
     disabled: False # If the job should be disabled (commented out) in the crontab. Only has effect if C(state=present).
-  when: ansible_os_family == 'Debian' and crntb_activate_cronjobs
+  when: crntb_activate_cronjobs
 
 - name: Crontab | cronjob ansible.sh
   cron:
@@ -37,5 +37,18 @@
     month: "*" # Month of the year the job should run ( 1-12, *, */2, etc )
     weekday: "*" # Day of the week that the job should run ( 0-6 for Sunday-Saturday, *, etc )
     disabled: False # If the job should be disabled (commented out) in the crontab. Only has effect if C(state=present).
-  when: ansible_os_family == 'Debian' and crntb_activate_cronjobs
+  when: crntb_activate_cronjobs
 
+# /****/
+
+# - name: 'Ensure an old job is no longer present. Removes any job that is prefixed by "#Ansible: an old job" from the crontab'
+#   cron:
+#     name: "an old job"
+#     state: absent
+
+# - name: Creates an entry like "@reboot /some/job.sh"
+#   cron:
+#     name: "a job for reboot"
+#     special_time: reboot
+#     job: "/some/job.sh"
+#

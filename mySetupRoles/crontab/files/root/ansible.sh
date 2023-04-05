@@ -6,7 +6,7 @@ LOG=./logs/$FileName
 mkdir -p /home/ibrahim/sandbox-ansible/
 
 # Set the repository URL and branch
-REPO_URL="git@github.com:ichibsah/ansible-for-devops.git"
+REPO_URL="https://github.com/ichibsah/ansible-for-devops.git"
 
 BRANCH="master"
 

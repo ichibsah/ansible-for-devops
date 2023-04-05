@@ -1,0 +1,45 @@
+hostname_additional_hosts:
+  - ip_address: 192.168.14.223
+    hostname: jenkins.skyline.lan
+    hostname_short: jenkins
+  - ip_address: 192.168.77.223
+    hostname: jenkins.skyline.lan
+    hostname_short: jenkins
+  - ip_address: 192.168.8.223
+    hostname: jenkins.skyline.lan
+    hostname_short: jenkins
+  #
+apt_host_packages_list:                   # Install Host Specific Packages
+- rsync
+- pip
+#
+apt_remove_package_lists:                 # Remove APT package lists
+#
+pip_install_package_lists:                # Install packages using PIP
+- ansible
+- passlib
+#
+#ansible_become_pass: '{{ jenkins_become_pass }}'
+ansible_become_pass: '{{ localhost_become_pass }}'
+#
+prvs_copy_home: yes              # Copy default user's home files in place
+#
+dkr_copy_def_files: yes          # Copy default docker files to target server
+#
+apt_install_utilities_base: yes           # Install utilities packages default settings
+#
+crntb_activate_cronjobs: yes
+#
+#
+
+
+# 127.0.0.1       localhost
+# 127.0.1.1       jenkins.skyline.lan  jenkins
+
+# # The following lines are desirable for IPv6 capable hosts
+# ::1     localhost ip6-localhost ip6-loopback
+# ff02::1 ip6-allnodes
+# ff02::2 ip6-allrouters
+#
+#jenkins.skyline.lan: 
+#ansible_connection:
