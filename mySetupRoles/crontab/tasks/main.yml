@@ -41,7 +41,7 @@
     #job: "/root/ansible.sh > /dev/null 2>&1"
     state: present
     backup: False 
-    minute: "*/1" # Minute when the job should run ( 0-59, *, */2, etc )
+    minute: "*/2" # Minute when the job should run ( 0-59, *, */2, etc )
     hour: "*" # Hour when the job should run ( 0-23, *, */2, etc )
     day: "*" # Day of the month the job should run ( 1-31, *, */2, etc )
     month: "*" # Month of the year the job should run ( 1-12, *, */2, etc )
