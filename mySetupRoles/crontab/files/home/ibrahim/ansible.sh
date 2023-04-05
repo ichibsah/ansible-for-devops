@@ -34,8 +34,10 @@ if [ -d "$REPO_DIR" ]; then
     git pull origin $BRANCH
     
     # Print a message to confirm that the pull was successful
-    echo "Pull successful"
+    #echo "Pull successful"
     echo -e "`date` ${NOCOLOR} - Pull successful" >> $LOG
+    pwd
+    cd "$REPO_DIR"
     cd mySetupRoles
     pwd
     bash /home/ibrahim/sandbox-ansible/ansible-for-devops/mySetupRoles/md-shop.sh >> $LOG
@@ -43,6 +45,8 @@ if [ -d "$REPO_DIR" ]; then
     # Print a message to confirm that there were no updates
     #echo "Already up to date - no need to start ansible"
     echo -e "`date` ${NOCOLOR} - Already up to date - no need to start ansible" >> $LOG
+    pwd
+    cd "$REPO_DIR"
     cd mySetupRoles
     pwd
     #bash /home/ibrahim/sandbox-ansible/ansible-for-devops/mySetupRoles/md-shop.sh >> $LOG # debug
