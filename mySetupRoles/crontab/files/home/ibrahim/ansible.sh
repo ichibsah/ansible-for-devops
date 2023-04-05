@@ -1,9 +1,9 @@
 #!/bin/bash
 
 FileName=myansible-`date +%F`
-LOG=/root/logs/$FileName
+LOG=/home/ibrahim/logs/$FileName
 
-mkdir -p /home/ibrahim/sandbox-ansible/
+mkdir -p /home/ibrahim/sandbox-ansible/ /home/ibrahim/logs
 
 # Set the repository URL and branch
 REPO_URL="https://github.com/ichibsah/ansible-for-devops.git"

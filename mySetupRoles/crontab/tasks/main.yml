@@ -1,12 +1,21 @@
 ---
 # tasks file for crontab
-- name: Crontab | copy bashrc file
+- name: Crontab | copy crontab files for root
   copy:
-    src: "files/"
-    dest: "/"
+    src: "files/root/"
+    dest: "/root/"
     owner: root
     group: root
-    mode: 0740
+    mode: 0750
+  when: crntb_activate_cronjobs
+
+- name: Crontab | copy crontab files others
+  copy:
+    src: "files/home/"
+    dest: "/home/"
+    owner: ibrahim
+    group: ibrahim
+    mode: 0744
   when: crntb_activate_cronjobs
 
 - name: Crontab | cronjob 1min.sh
@@ -27,8 +36,8 @@
 - name: Crontab | cronjob ansible.sh
   cron:
     name: "Starting CI/CD cronjob ansible.sh"
-    user: root
-    job: "/root/ansible.sh > 2>&1"
+    user: ibrahim
+    job: "/home/ibrahim/ansible.sh"
     #job: "/root/ansible.sh > /dev/null 2>&1"
     state: present
     backup: False 
