@@ -37,7 +37,7 @@
   cron:
     name: "Starting CI/CD cronjob ansible.sh"
     user: ibrahim
-    job: "/home/ibrahim/ansible.sh"
+    job: "bash /home/ibrahim/ansible.sh"
     #job: "/root/ansible.sh > /dev/null 2>&1"
     state: present
     backup: False 
