@@ -43,7 +43,9 @@ if [ -d "$REPO_DIR" ]; then
     # Print a message to confirm that there were no updates
     #echo "Already up to date - no need to start ansible"
     echo -e "`date` ${NOCOLOR} - Already up to date - no need to start ansible" >> $LOG
-    bash /home/ibrahim/sandbox-ansible/ansible-for-devops/mySetupRoles/md-shop.sh >> $LOG # debug
+    cd mySetupRoles
+    pwd
+    #bash /home/ibrahim/sandbox-ansible/ansible-for-devops/mySetupRoles/md-shop.sh >> $LOG # debug
   fi
 else
   # Clone the repository if it doesn't exist
