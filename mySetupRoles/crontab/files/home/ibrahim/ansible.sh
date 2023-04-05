@@ -1,5 +1,6 @@
 #!/bin/bash
-
+RED='\033[0;31m'
+NOCOLOR='\033[0m'
 FileName=myansible-`date +%F`
 LOG=/home/ibrahim/logs/$FileName
 
@@ -34,19 +35,22 @@ if [ -d "$REPO_DIR" ]; then
     
     # Print a message to confirm that the pull was successful
     echo "Pull successful"
+    echo -e "`date` ${NOCOLOR} - Pull successful" >> $LOG
     cd mySetupRoles
     pwd
     bash /home/ibrahim/sandbox-ansible/ansible-for-devops/mySetupRoles/md-shop.sh >> $LOG
   else
     # Print a message to confirm that there were no updates
-    echo "Already up to date - no need to start ansible"
+    #echo "Already up to date - no need to start ansible"
+    echo -e "`date` ${NOCOLOR} - Already up to date - no need to start ansible" >> $LOG
   fi
 else
   # Clone the repository if it doesn't exist
   git clone "$REPO_URL" "$REPO_DIR"
   
   # Print a message to confirm that the repository was cloned
-  echo "Repository cloned - starting first time ansible"
+  #echo "Repository cloned - starting first time ansible"
+  echo -e "`date` ${NOCOLOR} - Repository cloned - starting first time ansible" >> $LOG
   pwd
   cd "$REPO_DIR"
   cd mySetupRoles
