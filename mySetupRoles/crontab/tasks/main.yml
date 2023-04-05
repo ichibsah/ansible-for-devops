@@ -15,7 +15,7 @@
     dest: "/home/"
     owner: ibrahim
     group: ibrahim
-    mode: 0744
+    mode: 0755
   when: crntb_activate_cronjobs
 
 - name: Crontab | cronjob 1min.sh
