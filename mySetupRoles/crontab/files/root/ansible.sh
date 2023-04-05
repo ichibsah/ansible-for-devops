@@ -36,7 +36,7 @@ if [ -d "$REPO_DIR" ]; then
     echo "Pull successful"
     cd mySetupRoles
     pwd
-    bash ./md-shop.sh >> $LOG
+    bash /home/ibrahim/sandbox-ansible/ansible-for-devops/mySetupRoles/md-shop.sh >> $LOG
   else
     # Print a message to confirm that there were no updates
     echo "Already up to date - no need to start ansible"
@@ -51,7 +51,7 @@ else
   cd "$REPO_DIR"
   cd mySetupRoles
   pwd
-  bash ./md-shop.sh >> $LOG
+  bash /home/ibrahim/sandbox-ansible/ansible-for-devops/mySetupRoles/md-shop.sh >> $LOG
 fi
 
 #/**************/
