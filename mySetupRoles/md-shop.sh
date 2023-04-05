@@ -1,5 +1,6 @@
 #ansible-playbook -c local --list-host -i md-shop.yml run-main.yml # works
-ansible-playbook -c local -i ./md-shop.yml ./run-main.yml # works
+#
+/usr/local/bin/ansible-playbook -c local -i ./md-shop.yml ./run-main.yml # works
 
 # ansible-playbook run-provisions.yml # works
 # ansible-playbook run-hostname.yml # works
