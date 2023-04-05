@@ -154,7 +154,7 @@ alias a=alias d=ls ds="ls -al" drt="ls -lart" g="grep -i --color=yes" gc="grep -
 alias e=echo l=less t="type -a" ..="cd .." r="su -m root" 
 alias md=mkdir rd=rmdir dfh="df -h" ll="ls -l" la="ls -la"
 alias dmesg="dmesg -w -H"
-alias tailsyslog="tail -f /var/log/syslog"
+alias tsyslog="tail -f /var/log/syslog"
 alias tauth="tail -f /var/log/auth.log"
 alias tmylog="tail -f /root/logs/mylog-$(date +%F)"
 alias tmyansible="tail -f ~/logs/myansible-$(date +%F)"
