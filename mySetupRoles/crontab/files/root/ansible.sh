@@ -1,7 +1,7 @@
 #!/bin/bash
 
 FileName=myansible-`date +%F`
-LOG=./logs/$FileName
+LOG=/root/logs/$FileName
 
 mkdir -p /home/ibrahim/sandbox-ansible/
 
