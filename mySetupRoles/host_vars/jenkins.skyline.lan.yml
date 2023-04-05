@@ -2,12 +2,7 @@ hostname_additional_hosts:
   - ip_address: 192.168.14.223
     hostname: jenkins.skyline.lan
     hostname_short: jenkins
-  - ip_address: 192.168.77.223
-    hostname: jenkins.skyline.lan
-    hostname_short: jenkins
-  - ip_address: 192.168.8.223
-    hostname: jenkins.skyline.lan
-    hostname_short: jenkins
+
   #
 apt_host_packages_list:                   # Install Host Specific Packages
 - rsync
@@ -30,6 +25,7 @@ apt_install_utilities_base: yes           # Install utilities packages default s
 #
 crntb_activate_cronjobs: yes
 #
+prvs_root_passwd: yes            # update root passward
 #
 
 

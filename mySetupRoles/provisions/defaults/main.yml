@@ -2,3 +2,4 @@
 # defaults file for provisions
 #
 prvs_copy_home: yes             # Copy default user's home files in place
+prvs_root_passwd: no            # update root passward
