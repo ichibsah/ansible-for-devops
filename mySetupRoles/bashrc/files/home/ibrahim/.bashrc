@@ -166,12 +166,15 @@ alias dcd="docker compose down"
 alias restart="~/scripts/restart.sh"
 alias ss="ss -altnp"
 alias fs="ncdu"
-alias agrada='echo '\''that bitch'\'''
 alias ari='ansible-galaxy role init'
 alias vulscan='nmap -sV --script vulscan'
 alias rmv='rsync -avz --remove-source-files'
 alias update='sudo apt update && sudo apt upgrade -y && docker system prune -af'
 alias ift='sudo iftop -PFG -i eno1'
+alias tig='tig'
+alias devstat='nmcli dev status'
+alias constat='nmcli con show'
+
 #
 #kubectl aliases
 [ -f ~/opt/kubectx/.kubectl_aliases ] && source \
@@ -184,6 +187,7 @@ export KUBECTX_CURRENT_BGCOLOR=$(tput setab 7) # white background
 #
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
+export PATH=/sbin:/usr/sbin:$PATH
 export PATH=/home/isawadogo/opt/kubectx:$PATH
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/snap/fluxctl/162/bin
 export EDITOR=nano
