@@ -174,6 +174,7 @@ alias ift='sudo iftop -PFG -i eno1'
 alias tig='tig'
 alias devstat='nmcli dev status'
 alias constat='nmcli con show'
+alias venv='source ./virtual/bin/activate'
 
 #
 #kubectl aliases
