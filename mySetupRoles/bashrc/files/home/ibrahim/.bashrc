@@ -175,6 +175,10 @@ alias tig='tig'
 alias devstat='nmcli dev status'
 alias constat='nmcli con show'
 alias venv='source ./virtual/bin/activate'
+alias venvmk='virtualenv -p python3 .venv'
+alias python='python3'
+
+
 
 #
 #kubectl aliases
