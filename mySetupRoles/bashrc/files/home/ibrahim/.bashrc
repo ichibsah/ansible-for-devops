@@ -174,7 +174,7 @@ alias ift='sudo iftop -PFG -i eno1'
 alias tig='tig'
 alias devstat='nmcli dev status'
 alias constat='nmcli con show'
-alias venv='source ./virtual/bin/activate'
+alias venv='source ./.venv/bin/activate'
 alias venvmk='virtualenv -p python3 .venv'
 alias python='python3'
 
