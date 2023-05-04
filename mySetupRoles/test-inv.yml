@@ -15,6 +15,7 @@ all:
       hosts:
         jenkins.skyline.lan: 
         solr.skyline.lan: 
+        gitlab.skyline.lan: 
           #ansible_host: 192.168.14.223
     
         #localhost: # having this enable will connect to the localhost twice, which will work but the hostname update for this 'localhost' will fail.

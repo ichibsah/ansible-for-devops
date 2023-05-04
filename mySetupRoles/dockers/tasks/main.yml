@@ -7,7 +7,7 @@
     owner: ibrahim
     group: ibrahim
     mode: 0744
-  when: ansible_os_family == 'Debian' and dkr_copy_def_files # ansible_hostname != 'virthost01' or ansible_hostname != '4a999ff'
+  when: ansible_os_family == 'Debian' and dkr_copy_def_files # ansible_hostname != 'virthost01' or ansible_hostname != '4a999ff' 
 
 - name: DOCKERS | Copy extended docker files to target host
   copy:
@@ -16,16 +16,22 @@
     owner: ibrahim
     group: ibrahim
     mode: 0744
-  when: ansible_os_family == 'Debian' and dkr_copy_etx_files #ansible_hostname == 'a35a0d3'
+  when: ansible_os_family == 'Debian' and dkr_copy_etx_files # ansible_hostname == 'a35a0d3'
 
-- name: DOCKERS | Copy Specific docker files to target host
+- name: DOCKERS | Copy Specific docker folder(s) to target host
   copy:
-    src: "files/{{items}}/docker"
+    src: "files/{{item.fldr}}/docker"
     dest: "/opt/"
     owner: ibrahim
     group: ibrahim
     mode: 0744
-    with_items: 
-      "{{dckr_fldr_lst}}"
+  with_items:
+    "{{ dckr_fldr_lst }}"
   when: dckr_fldr_lst.0 is defined
-  
+
+
+# command: touch "{{ item.item }}"
+#   with_items:
+#       - { item: "1" }
+#       - { item: "2" }
+#       - { item: "3" }
