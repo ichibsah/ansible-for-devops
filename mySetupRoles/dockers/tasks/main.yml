@@ -17,3 +17,15 @@
     group: ibrahim
     mode: 0744
   when: ansible_os_family == 'Debian' and dkr_copy_etx_files #ansible_hostname == 'a35a0d3'
+
+- name: DOCKERS | Copy Specific docker files to target host
+  copy:
+    src: "files/{{items}}/docker"
+    dest: "/opt/"
+    owner: ibrahim
+    group: ibrahim
+    mode: 0744
+    with_items: 
+      "{{dckr_fldr_lst}}"
+  when: dckr_fldr_lst.0 is defined
+  
