@@ -2,6 +2,8 @@
 # defaults file for crontab
 #
 crntb_activate_cronjobs: no
+#
+crntb_actvt_crnjbs_vrnssg: no
 
 
 # OUTPUT #
