@@ -68,7 +68,7 @@
   cron:
     name: "Starting CI/CD cronjob vernissage.sh"
     user: ibrahim
-    job: "bash /home/ibrahim/vernissage.sh"
+    job: "python3 /home/ibrahim/vernissage.py"
     state: absent
     backup: False 
     minute: "*/2" # Minute when the job should run ( 0-59, *, */2, etc )

@@ -56,14 +56,16 @@ def pull_repository_changes(branch):
 
 def start_vernissage():
     os.chdir(REPO_DIR)
-    subprocess.run(['bash', f'{REPO_DIR}/run.sh'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p = subprocess.Popen(['bash', f'{REPO_DIR}/run.sh'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    log_message(out.decode(), err.decode())
 
 
-def log_message(message):
+def log_message(stdout_message="", stderr_message=""):
     log_file_name = f'vernissage-{datetime.now().strftime("%Y-%m-%d")}'
     log_file_path = f'{LOG_DIR}/{log_file_name}'
     with open(log_file_path, 'a') as log_file:
-        log_file.write(f'{datetime.now()} {NOCOLOR} - {message}\n')
+        log_file.write(f'{datetime.now()} {NOCOLOR} - {stdout_message} {RED} {stderr_message} {NOCOLOR}\n')
 
 
 def main():
