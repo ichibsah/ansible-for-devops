@@ -64,6 +64,21 @@
     disabled: False # If the job should be disabled (commented out) in the crontab. Only has effect if C(state=present).
   when: crntb_actvt_crnjbs_vrnssg
 
+- name: Crontab | /*REMOVE*/ cronjob vernissage.sh
+  cron:
+    name: "Starting CI/CD cronjob vernissage.sh"
+    user: ibrahim
+    job: "bash /home/ibrahim/vernissage.sh"
+    state: absent
+    backup: False 
+    minute: "*/2" # Minute when the job should run ( 0-59, *, */2, etc )
+    hour: "*" # Hour when the job should run ( 0-23, *, */2, etc )
+    day: "*" # Day of the month the job should run ( 1-31, *, */2, etc )
+    month: "*" # Month of the year the job should run ( 1-12, *, */2, etc )
+    weekday: "*" # Day of the week that the job should run ( 0-6 for Sunday-Saturday, *, etc )
+    disabled: False # If the job should be disabled (commented out) in the crontab. Only has effect if C(state=present).
+  when: not crntb_actvt_crnjbs_vrnssg
+
 # /****/
 
 # - name: 'Ensure an old job is no longer present. Removes any job that is prefixed by "#Ansible: an old job" from the crontab'

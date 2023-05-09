@@ -6,7 +6,7 @@ from datetime import datetime
 RED = '\033[0;31m'
 NOCOLOR = '\033[0m'
 
-PWD_DIR = '/home/ibrahim/temp-docker/universe-vernissage'
+PWD_DIR = '/home/ibrahim/temp-docker/'
 REPO_DIR = '/home/ibrahim/temp-docker/universe-vernissage'
 REPO_URL = 'https://github.com/ichibsah/universe-vernissage.git'
 LOG_DIR = '/home/ibrahim/logs'
@@ -29,7 +29,7 @@ def check_repository_dir():
 
 
 def clone_repository():
-    subprocess.run(['git', 'clone', REPO_URL, PWD_DIR])
+    subprocess.run(['git', 'clone', REPO_URL, REPO_DIR])
 
 
 def fetch_repository_updates():
@@ -38,13 +38,13 @@ def fetch_repository_updates():
 
 
 def get_latest_commit_hash(branch):
-    os.chdir(PWD_DIR)
+    os.chdir(REPO_DIR)
     output = subprocess.check_output(['git', 'rev-parse', f'origin/{branch}'])
     return output.decode('utf-8').strip()
 
 
 def get_current_commit_hash():
-    os.chdir(PWD_DIR)
+    os.chdir(REPO_DIR)
     output = subprocess.check_output(['git', 'rev-parse', 'HEAD'])
     return output.decode('utf-8').strip()
 
@@ -55,8 +55,8 @@ def pull_repository_changes(branch):
     
 
 def start_vernissage():
-    os.chdir(PWD_DIR)
-    subprocess.run(['bash', f'{PWD_DIR}/run.sh'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    os.chdir(REPO_DIR)
+    subprocess.run(['bash', f'{REPO_DIR}/run.sh'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
 def log_message(message):
