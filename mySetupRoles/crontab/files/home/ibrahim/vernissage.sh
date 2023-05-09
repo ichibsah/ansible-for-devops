@@ -4,7 +4,7 @@ NOCOLOR='\033[0m'
 FileName=vernissage-`date +%F`
 LOG=/home/ibrahim/logs/$FileName
 
-mkdir -p /home/ibrahim/temp-docker /home/ibrahim/logs
+mkdir -p /home/ibrahim/temp-docker/universe-vernissage /home/ibrahim/logs
 
 # Set the repository URL and branch
 REPO_URL="https://github.com/ichibsah/universe-vernissage.git"
@@ -12,12 +12,13 @@ REPO_URL="https://github.com/ichibsah/universe-vernissage.git"
 BRANCH="master"
 
 # Set the repository directory
-REPO_DIR="/home/ibrahim/temp-docker"
+PWD_DIR="/home/ibrahim/temp-docker/universe-vernissage"
+REPO_DIR="/home/ibrahim/temp-docker/universe-vernissage"
 
 # Check if the repository directory already exists
 if [ -d "$REPO_DIR" ]; then
   # Go to the repository directory
-  cd "$REPO_DIR"
+  cd "$PWD_DIR"
   
   # Check for any updates
   git fetch
@@ -37,8 +38,8 @@ if [ -d "$REPO_DIR" ]; then
     #echo "Pull successful"
     echo -e "`date` ${NOCOLOR} - Pull successful" >> $LOG
     pwd
-    cd "$REPO_DIR"
-    cd universe-vernissage
+    cd "$PWD_DIR"
+    #cd universe-vernissage
     pwd
     bash /home/ibrahim/temp-docker/universe-vernissage/run.sh >> $LOG
   else
@@ -46,21 +47,21 @@ if [ -d "$REPO_DIR" ]; then
     #echo "Already up to date - no need to start ansible"
     echo -e "`date` ${NOCOLOR} - Already up to date - no need to start vernissage" >> $LOG
     pwd
-    cd "$REPO_DIR"
-    cd universe-vernissage
+    cd "$PWD_DIR"
+    #cd universe-vernissage
     pwd
     #bash /home/ibrahim/sandbox-ansible/ansible-for-devops/mySetupRoles/md-shop.sh >> $LOG # debug
   fi
 else
   # Clone the repository if it doesn't exist
-  git clone "$REPO_URL" "$REPO_DIR"
+  git clone "$REPO_URL" "$PWD_DIR"
   
   # Print a message to confirm that the repository was cloned
   #echo "Repository cloned - starting first time ansible"
   echo -e "`date` ${NOCOLOR} - Repository cloned - starting first time vernissage" >> $LOG
   pwd
-  cd "$REPO_DIR"
-  cd universe-vernissage
+  cd "$PWD_DIR"
+  #cd universe-vernissage
   pwd
   bash /home/ibrahim/temp-docker/universe-vernissage/run.sh >> $LOG
 fi

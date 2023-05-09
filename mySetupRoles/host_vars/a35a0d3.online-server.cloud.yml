@@ -16,7 +16,7 @@ dkr_copy_etx_files: yes                   # # Copy extended docker files to targ
 
 crntb_activate_cronjobs: no
 #
-crntb_actvt_crnjbs_vrnssg: yes
+#crntb_actvt_crnjbs_vrnssg: yes
 #
 ### APT | PACKAGES INSTALL ###
 instl_def_pckg: yes                       # Install complete packages. A 'no' will remove it from the host (apt_def_pckg_lst)
