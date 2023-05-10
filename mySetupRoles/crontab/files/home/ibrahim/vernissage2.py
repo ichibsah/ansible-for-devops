@@ -33,7 +33,7 @@ def clone_repository():
 
 
 def fetch_repository_updates():
-    os.chdir(PWD_DIR)
+    os.chdir(REPO_DIR)
     subprocess.run(['git', 'fetch'])
 
 

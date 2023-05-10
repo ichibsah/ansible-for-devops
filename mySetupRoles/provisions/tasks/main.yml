@@ -1,5 +1,9 @@
 ---
 # tasks file for provisions
+- name: PROVISIONS | Set timezone to Europe/Berlin
+  timezone:
+    name: Europe/Berlin
+
 - name: PROVISIONS | Add/Update deployment user.
   user:
     name: ibrahim # required. Name of the user to create, remove or modify.

@@ -177,6 +177,7 @@ alias constat='nmcli con show'
 alias venv='source ./.venv/bin/activate'
 alias venvmk='virtualenv -p python3 .venv'
 alias python='python3'
+alias djngprg='python3 -m pip install django && django-admin startproject config . && python manage.py migrate && python manage.py runserver'
 
 
 

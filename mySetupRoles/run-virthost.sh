@@ -3,7 +3,7 @@
 # Multi-server tests for the orchestration example.
 #set -e
 ansible-inventory --list
-#
+# ansible jenkins.skyline.lan -m setup > ~/jenkins.skyline.lan.txt
 ansible-playbook run-main.yml # works
 # ansible-playbook run-provisions.yml # works
 # ansible-playbook run-hostname.yml # works
