@@ -1,7 +1,7 @@
 
-#git remote add master git@github.com:ichibsah/ansible-for-devops.git
+git remote add master git@github.com:ichibsah/ansible-for-devops.git
 
-#git push --force --set-upstream master master
+git push --force --set-upstream master master
 
 # https://github.com/ichibsah/ansible-for-devops.git
 # git@github.com:ichibsah/ansible-for-devops.git
