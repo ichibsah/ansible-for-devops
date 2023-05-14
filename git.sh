@@ -8,11 +8,11 @@
 #git push <name>
 
 #…or push an existing repository from the command line
-git remote add origin git@github.com:ichibsah/ansible-for-devops.git
+#git remote add origin git@github.com:ichibsah/ansible-for-devops.git
 #git branch -M main
-git branch -M master
+#git branch -M master
 #git push -u origin main
-git push -u origin master
+#git push -u origin master
 
 
 git add .
