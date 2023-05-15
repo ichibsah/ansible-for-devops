@@ -177,7 +177,9 @@ alias constat='nmcli con show'
 alias venv='source ./.venv/bin/activate'
 alias venvmk='virtualenv -p python3 .venv'
 alias python='python3'
+alias port='netstat -ltnp | grep $1'
 alias djngprg='python3 -m pip install django && django-admin startproject config . && python manage.py startapp website && python manage.py migrate && pip freeze > requirements.txt && python manage.py runserver 0.0.0.0:8000'
+
 
 
 
