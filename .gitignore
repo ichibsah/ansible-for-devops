@@ -9,3 +9,13 @@ test.sh
 */roles/geerlingguy.*
 */provisioning/roles/geerlingguy.*
 */collections/ansible_collections/community/*
+
+# ignore all logs
+*.log
+**/logs
+logs
+logs/
+
+**/.venv
+temp/
+**/.cache
