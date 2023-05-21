@@ -149,7 +149,7 @@ git config --global user.email $USER@$HOSTNAME
 #
 alias apv='ansible-playbook --vault-id ~/.ssh/.jenkins-vault.pw'
 #alias ansible-playbook='. ./environment.sh && ansible-playbook'
-alias azlogin='az login --use-device-code'
+alias azlogin='az login --allow-no-subscriptions --use-device-code'
 alias a=alias d=ls ds="ls -al" drt="ls -lart" g="grep -i --color=yes" gc="grep --color=yes" 
 alias e=echo l=less t="type -a" ..="cd .." r="su -m root" 
 alias md=mkdir rd=rmdir dfh="df -h" ll="ls -l" la="ls -la"

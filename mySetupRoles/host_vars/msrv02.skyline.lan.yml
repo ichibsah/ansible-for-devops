@@ -1,7 +1,7 @@
 hostname_additional_hosts:
   - ip_address: 192.168.14.32
-    hostname: msvr02.skyline.lan
-    hostname_short: msvr02
+    hostname: msrv02.skyline.lan
+    hostname_short: msrv02
   #
 #
 ### PRVS | CONFIG ###
