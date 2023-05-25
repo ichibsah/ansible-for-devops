@@ -1,6 +1,8 @@
 ---
 - name: HOSTNAME | Initialisation
   hosts: allservers
+  ignore_errors: true
+  ignore_unreachable: true
   # remote_user: root
   remote_user: ibrahim
   become: true
@@ -10,6 +12,8 @@
 
 - name: HOSTNAME | Initialisation - LOCALHOST
   hosts: local
+  ignore_errors: true
+  ignore_unreachable: true
   connection: local
   # remote_user: root
   remote_user: ibrahim
