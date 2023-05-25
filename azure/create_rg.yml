@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Creating resource group - "{{ name }}"
+      azure_rm_resourcegroup:
+        name: "{{ name }}"
+        location: "{{ location }}"
+      register: rg
+    - debug:
+        var: rg
+
+# ansible-playbook create_rg.yml --extra-vars "name=asbl_RG location=North Europe"

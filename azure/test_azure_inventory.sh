@@ -1,0 +1,1 @@
+ansible-playbook -i ./azure_rm.py test_azure_inventory.yml
