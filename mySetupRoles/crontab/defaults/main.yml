@@ -4,7 +4,8 @@
 crntb_activate_cronjobs: no
 #
 crntb_actvt_crnjbs_vrnssg: no
-
+#
+crntb_actvt_crnjbs_mrym: no
 
 # OUTPUT #
 # # m h  dom mon dow   command

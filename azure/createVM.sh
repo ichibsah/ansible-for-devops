@@ -9,7 +9,7 @@ az vm create \
 --name QuickstartAnsible-vm \
 --image OpenLogic:CentOS:7.7:latest \
 --admin-username azureuser \
---admin-password <password>
+--admin-password Pa$$w0rd1234
 
 #Get the public Ip address of the Azure virtual machine.
 az vm show -d -g QuickstartAnsible-rg -n QuickstartAnsible-vm --query publicIps -o tsv

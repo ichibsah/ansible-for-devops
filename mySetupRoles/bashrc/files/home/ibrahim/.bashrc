@@ -146,6 +146,7 @@ ssh-add ~/.ssh/ibrahim@4a999ff.key
 #
 git config --global user.name $USER
 git config --global user.email $USER@$HOSTNAME
+git config --global core.editor nano
 #
 alias apv='ansible-playbook --vault-id ~/.ssh/.jenkins-vault.pw'
 #alias ansible-playbook='. ./environment.sh && ansible-playbook'
@@ -163,6 +164,7 @@ alias myrmlint="rmlint -D -g -p -S pOma -s 7M ."
 alias myrmlint1="rmlint -pvgw -s 7M ."
 alias dcu="docker compose up -d"
 alias dcd="docker compose down"
+alias docker-compose="docker compose"
 alias restart="~/scripts/restart.sh"
 alias ss="ss -altnp"
 alias fs="ncdu"
