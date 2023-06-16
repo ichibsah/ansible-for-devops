@@ -7,6 +7,10 @@ pipeline {
     triggers {
         pollSCM '* * * * *'
     }
+    environment {
+        ANSIBLE-VAULT = credentials('ansible-vault')
+        
+    }
     stages {
         stage('Ansible | Provision') {
             steps {
@@ -16,7 +20,8 @@ pipeline {
                 cd mySetupRoles
                 pwd
                 which ansible-playbook
-                /usr/bin/ansible-playbook ./run-provisions.yml
+                touch /home/jenkins/log/ansible.log
+                /usr/bin/ansible-playbook --vault-id 'ANSIBLE-VAULT' ./run-provisions.yml
                 '''
             }
         }
