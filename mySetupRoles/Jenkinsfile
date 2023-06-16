@@ -15,12 +15,12 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'ansible-vault', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     // Access credentials as environment variables
-                    sh 'echo "Username: $USERNAME Password: $PASSWORD"'
+                    // sh 'echo "Username: $USERNAME Password: $PASSWORD"'
                     
-                    // Save credentials in a variable
-                    script {
-                        env.ANSIBLE_VAULT = "${PASSWORD}"
-                    }
+                    // // Save credentials in a variable
+                    // script {
+                    //     env.ANSIBLE_VAULT = "${PASSWORD}"
+                    // }
                     sh '''
                     cd mySetupRoles
                     touch ./.vaultpass
