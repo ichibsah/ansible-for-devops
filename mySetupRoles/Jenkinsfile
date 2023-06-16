@@ -21,10 +21,12 @@ pipeline {
                     script {
                         env.ANSIBLE_VAULT = "${PASSWORD}"
                     }
-                    sh "touch ./.vaultpass"
-                    sh "chown jenkins:jenkins ./.vaultpass"
-                    sh "chmod 640 ./.vaultpass"                    
-                    sh "echo '${PASSWORD}' > ./.vaultpass"
+                    sh '''
+                    touch ./.vaultpass
+                    chown jenkins:jenkins ./.vaultpass
+                    chmod 640 ./.vaultpass
+                    echo "${PASSWORD}" > ./.vaultpass
+                    '''
                 }
             }
         }
