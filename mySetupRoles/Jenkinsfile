@@ -5,25 +5,24 @@ pipeline {
             }
       }
     triggers {
-        pollSCM '* * * * *'
+        pollSCM 'H * * * *'
     }
     environment {
-        ANSIBLE-VAULT = credentials('ansible-vault')
-        //withCredentials([string(credentialsId: 'ansible-vault', variable: 'ANSIBLE-VAULT')]) {
-                    // Create virtualenv
-                    //#sh "virtualenv ."
-                    // Install Ansible module
-                    //#sh "./bin/pip install ansible"
-                    // Create our vaultpass file
-                    //#sh "touch ./.vaultpass"
-                    //#sh "chown jenkins:jenkins ./.vaultpass"
-                    //#sh "chmod 640 ./.vaultpass"                    
-                    //#sh "echo '${vaultPass}' > ./.vaultpass"
-                    //#sh "bin/ansible-vault decrypt secret-file.pem --vault-password-file ./.vaultpass"
-          //      }
-        
+        ANSIBLE-VAULT = ''
     }
     stages {
+        stage('Example') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'ansible-vault', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    // Access credentials as environment variables
+                    sh 'echo "Username: $USERNAME Password: $PASSWORD"'
+                    
+                    // Save credentials in a variable
+                    script {
+                        env.ANSIBLE-VAULT = "${PASSWORD}"
+                    }
+                }
+            }
         stage('Ansible | Provision') {
             steps {
                 echo "Provision..."
