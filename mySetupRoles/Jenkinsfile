@@ -15,6 +15,7 @@ pipeline {
                 pwd
                 cd mySetupRoles
                 pwd
+                which ansible-playbook
                 ansible-playbook run-provisions.yml
                 '''
             }
