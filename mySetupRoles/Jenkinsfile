@@ -21,6 +21,11 @@ pipeline {
                     script {
                         env.ANSIBLE_VAULT = "${PASSWORD}"
                     }
+                    sh "touch ./.vaultpass"
+                    sh "chown jenkins:jenkins ./.vaultpass"
+                    sh "chmod 640 ./.vaultpass"                    
+                    sh "echo '${PASSWORD}' > ./.vaultpass"
+                    sh "bin/ansible-vault decrypt secret-file.pem --vault-password-file ./.vaultpass"
                 }
             }
         }
@@ -32,8 +37,8 @@ pipeline {
                 cd mySetupRoles
                 pwd
                 which ansible-playbook
-                #touch /home/jenkins/log/ansible.log
-                /usr/bin/ansible-playbook --vault-id ${ANSIBLE_VAULT} ./run-provisions.yml
+                echo "" > /home/jenkins/log/ansible.log
+                /usr/bin/ansible-playbook --vault-id ./.vaultpass ./run-provisions.yml
                 '''
             }
         }
