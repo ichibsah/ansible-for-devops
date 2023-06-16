@@ -11,7 +11,7 @@ pipeline {
         ANSIBLE-VAULT = ''
     }
     stages {
-        stage('Example') {
+        stage('Get Credentials') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'ansible-vault', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     // Access credentials as environment variables
@@ -23,6 +23,7 @@ pipeline {
                     }
                 }
             }
+        }
         stage('Ansible | Provision') {
             steps {
                 echo "Provision..."
