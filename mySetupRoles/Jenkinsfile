@@ -38,6 +38,7 @@ pipeline {
                 cd mySetupRoles
                 pwd
                 which ansible-playbook
+                mkdir -p /home/jenkins/log
                 echo "" > /home/jenkins/log/ansible.log
                 /usr/bin/ansible-playbook --vault-id ./.vaultpass ./run-provisions.yml
                 '''
