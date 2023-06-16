@@ -5,10 +5,10 @@ pipeline {
             }
       }
     triggers {
-        pollSCM 'H * * * *'
+        pollSCM '* * * * *'
     }
     environment {
-        ANSIBLE-VAULT = ''
+        ANSIBLE_VAULT = ''
     }
     stages {
         stage('Get Credentials') {
@@ -19,7 +19,7 @@ pipeline {
                     
                     // Save credentials in a variable
                     script {
-                        env.ANSIBLE-VAULT = "${PASSWORD}"
+                        env.ANSIBLE_VAULT = "${PASSWORD}"
                     }
                 }
             }
