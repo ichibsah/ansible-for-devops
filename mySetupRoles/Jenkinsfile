@@ -32,8 +32,8 @@ pipeline {
                 cd mySetupRoles
                 pwd
                 which ansible-playbook
-                touch /home/jenkins/log/ansible.log
-                /usr/bin/ansible-playbook --vault-id ${ANSIBLE-VAULT} ./run-provisions.yml
+                #touch /home/jenkins/log/ansible.log
+                /usr/bin/ansible-playbook --vault-id ${ANSIBLE_VAULT} ./run-provisions.yml
                 '''
             }
         }
