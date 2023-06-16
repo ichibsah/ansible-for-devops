@@ -8,8 +8,8 @@ pipeline {
         pollSCM '* * * * *'
     }
     environment {
-        //ANSIBLE-VAULT = credentials('ansible-vault')
-        withCredentials([string(credentialsId: 'ansible-vault', variable: 'ANSIBLE-VAULT')]) {
+        ANSIBLE-VAULT = credentials('ansible-vault')
+        //withCredentials([string(credentialsId: 'ansible-vault', variable: 'ANSIBLE-VAULT')]) {
                     // Create virtualenv
                     //#sh "virtualenv ."
                     // Install Ansible module
@@ -20,7 +20,7 @@ pipeline {
                     //#sh "chmod 640 ./.vaultpass"                    
                     //#sh "echo '${vaultPass}' > ./.vaultpass"
                     //#sh "bin/ansible-vault decrypt secret-file.pem --vault-password-file ./.vaultpass"
-                }
+          //      }
         
     }
     stages {
