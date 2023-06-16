@@ -10,10 +10,11 @@ pipeline {
     stages {
         stage('Ansible | Provision') {
             steps {
-                echo "Building.."
+                echo "Provision..."
                 sh '''
                 pwd
                 cd mySetupRoles
+                pwd
                 ansible-playbook run-provisions.yml
                 '''
             }
