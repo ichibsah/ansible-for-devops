@@ -22,6 +22,7 @@ pipeline {
                         env.ANSIBLE_VAULT = "${PASSWORD}"
                     }
                     sh '''
+                    cd mySetupRoles
                     touch ./.vaultpass
                     chown jenkins:jenkins ./.vaultpass
                     chmod 640 ./.vaultpass
