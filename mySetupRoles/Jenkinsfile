@@ -25,7 +25,6 @@ pipeline {
                     sh "chown jenkins:jenkins ./.vaultpass"
                     sh "chmod 640 ./.vaultpass"                    
                     sh "echo '${PASSWORD}' > ./.vaultpass"
-                    sh "bin/ansible-vault decrypt secret-file.pem --vault-password-file ./.vaultpass"
                 }
             }
         }
