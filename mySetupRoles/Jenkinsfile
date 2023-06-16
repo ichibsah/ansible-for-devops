@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
+                pwd
                 cd mySetupRoles
                 ansible-playbook run-provisions.yml
                 '''
