@@ -54,7 +54,7 @@ pipeline {
                         //           user: "${SSH_USER}", 
                         //           keyFile: "${SSH_KEY}", 
                         //           script: "cd /home/ibrahim/sandbox/ansible-for-devops/mySetupRoles && ./run.sh"
-                        sh "ssh -i ${SSH_KEY} ${SSH_USER}@192.168.14.254 '/home/ibrahim/sandbox/ansible-for-devops/mySetupRoles/run.sh'"
+                        bash "ssh -i ${SSH_KEY} ${SSH_USER}@192.168.14.254 '/home/ibrahim/sandbox/ansible-for-devops/mySetupRoles/run.sh'"
                     }
                 }
             }
