@@ -9,8 +9,8 @@ docker run -d \
     -v $(pwd)/docker/etc:/etc/pihole \
     -v $(pwd)/docker/dnsmasq:/etc/dnsmasq.d \
     --dns=1.1.1.1 \
-    --hostname pihole.zertiahmef.com \
-    -e VIRTUAL_HOST="pihole.zertiahmef.com" \
-    -e PROXY_LOCATION="pihole.zertiahmef.com" \
-    -e ServerIP="217.160.100.194" \
+    --hostname pihole.sawadogo.xyz \
+    -e VIRTUAL_HOST="pihole.sawadogo.xyz" \
+    -e PROXY_LOCATION="pihole.sawadogo.xyz" \
+    -e ServerIP="217.160.100.209" \
     pihole/pihole:latest
