@@ -1,13 +1,17 @@
 docker pull  pihole/pihole:latest
 #
+mkdir -p ./docker
+sudo chmod 777 ./docker/* -R
+sudo chown ibrahim:ibrahim ./* -R
+#
 docker run -d \
     --name pihole \
-    -p 53:53/tcp -p 53:53/udp \
+    -p 55:53/tcp -p 55:53/udp \
     -p 8080:80 \
     --restart always \
     -e TZ="Europe/Berlin" \
-    -v $(pwd)/docker/etc:/etc/pihole \
-    -v $(pwd)/docker/dnsmasq:/etc/dnsmasq.d \
+    -v ./docker/etc:/etc/pihole \
+    -v ./docker/dnsmasq:/etc/dnsmasq.d \
     --dns=1.1.1.1 \
     --hostname pihole.sawadogo.xyz \
     -e VIRTUAL_HOST="pihole.sawadogo.xyz" \
