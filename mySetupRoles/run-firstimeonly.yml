@@ -1,15 +1,15 @@
 ---
 - name: PROVISIONS | First time Initialisation
-  hosts: allservers
+  hosts: firstimeonly
   ignore_errors: true
   ignore_unreachable: true
-  # remote_user: root
-  remote_user: ibrahim
+  remote_user: root
+  #remote_user: ibrahim
   become: true
   become_user: root
   roles:
-    - provisions
     - ssh
+    - provisions
 
 # - name: PROVISIONS | First time Initialisation - LOCALHOST
 #   hosts: local

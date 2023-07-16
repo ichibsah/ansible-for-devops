@@ -13,16 +13,6 @@
     create_home: True
     state: present # not required. choices: absent;present. Whether the account should exist or not, taking action if the state is different from what is stated.
 
-- name: PROVISIONS | Update root password.
-  user:
-    name: root
-    shell: /bin/bash # not required. Optionally set the user's shell. On macOS, before Ansible 2.5, the default shell for non-system users was C(/usr/bin/false). Since Ansible 2.5, the default shell for non-system users on macOS is C(/bin/bash). On other operating systems, the default shell is determined by the underlying tool being used. See Notes for details.
-    update_password: always
-    password: "{{ localhost_become_pass | password_hash('sha512') }}"
-    create_home: True
-    state: present
-  when: prvs_root_passwd
-                
 # Disable root login and use `sudo`.
 - name: PROVISIONS | Add sudo rights for deployment user.
   lineinfile:
@@ -41,3 +31,13 @@
     group: ibrahim
     mode: 0644
   when: prvs_copy_home
+
+- name: PROVISIONS | Update root password.
+  user:
+    name: root
+    shell: /bin/bash # not required. Optionally set the user's shell. On macOS, before Ansible 2.5, the default shell for non-system users was C(/usr/bin/false). Since Ansible 2.5, the default shell for non-system users on macOS is C(/bin/bash). On other operating systems, the default shell is determined by the underlying tool being used. See Notes for details.
+    update_password: always
+    password: "{{ localhost_become_pass | password_hash('sha512') }}"
+    create_home: True
+    state: present
+  when: prvs_root_passwd
