@@ -1,5 +1,5 @@
 hostname_additional_hosts:
-  - ip_address: 192.168.14.228
+  - ip_address: 192.168.77.213
     hostname: gitlab.skyline.lan
     hostname_short: gitlab
 

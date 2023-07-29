@@ -3,3 +3,21 @@
 #
 prvs_copy_home: yes             # Copy default user's home files in place
 prvs_root_passwd: no            # update root passward
+#
+users:
+  - name: root
+    shell: /bin/bash
+    groups: root, sudo, docker
+    append: True
+    state: present
+    key: root.pub
+    create_home: True
+    hosts: all
+  - name: ibrahim
+    shell: /bin/bash
+    groups: ibrahim, sudo, docker
+    append: True
+    state: present
+    key: ibrahim.pub
+    create_home: True
+    hosts: all

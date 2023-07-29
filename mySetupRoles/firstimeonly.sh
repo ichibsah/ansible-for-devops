@@ -5,4 +5,4 @@
 #
 ansible-inventory -y --list
 #
-ansible-playbook run-firstimeonly.yml # works
+ansible-playbook -v run-firstimeonly.yml # works
