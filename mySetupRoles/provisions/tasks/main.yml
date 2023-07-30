@@ -1,10 +1,10 @@
 ---
 # tasks file for provisions
-- name: Job-ID-1000 PROVISIONS | Set timezone to Europe/Berlin
+- name: Job-1000 PROVISIONS | Set timezone to Europe/Berlin
   timezone:
     name: Europe/Berlin
 
-- name: Job-ID-1001 PROVISIONS | Add/Update deployment user.
+- name: Job-1001 PROVISIONS | Add/Update deployment user.
   user:
     name: ibrahim # required. Name of the user to create, remove or modify.
     shell: /bin/bash # not required. Optionally set the user's shell. On macOS, before Ansible 2.5, the default shell for non-system users was C(/usr/bin/false). Since Ansible 2.5, the default shell for non-system users on macOS is C(/bin/bash). On other operating systems, the default shell is determined by the underlying tool being used. See Notes for details.
@@ -14,7 +14,7 @@
     state: present # not required. choices: absent;present. Whether the account should exist or not, taking action if the state is different from what is stated.
 
 # Disable root login and use `sudo`.
-- name: Job-ID-1002 PROVISIONS | Add sudo rights for deployment user.
+- name: Job-1002 PROVISIONS | Add sudo rights for deployment user.
   lineinfile:
     dest: /etc/sudoers
     regexp: '^ibrahim'
@@ -23,7 +23,7 @@
     validate: 'visudo -cf %s'
   when: ansible_os_family == 'Debian' and ansible_hostname != 'virthost01'
 
-- name: Job-ID-1003 PROVISIONS | Copy deployment user's home files in place.
+- name: Job-1003 PROVISIONS | Copy deployment user's home files in place.
   copy:
     src: "files/home/ibrahim"
     dest: "/home"
@@ -32,7 +32,7 @@
     mode: 0644
   when: prvs_copy_home
 
-- name: Job-ID-1004 PROVISIONS | Update root password.
+- name: Job-1004 PROVISIONS | Update root password.
   user:
     name: root
     shell: /bin/bash # not required. Optionally set the user's shell. On macOS, before Ansible 2.5, the default shell for non-system users was C(/usr/bin/false). Since Ansible 2.5, the default shell for non-system users on macOS is C(/bin/bash). On other operating systems, the default shell is determined by the underlying tool being used. See Notes for details.
@@ -42,7 +42,7 @@
     state: present
   when: prvs_root_passwd
 
-- name: Job-ID-1005 PROVISIONS | creating users and groups and ssh connection
+- name: Job-1005 PROVISIONS | creating users and groups and ssh connection
   user:
     name: "{{item.name}}"
     update_password: always
@@ -54,8 +54,10 @@
     state: present
   loop: "{{ users }}"
 
-- authorized_key:
+- name: Job-1006 PROVISIONS | add pulic keys to authorized_key
+  authorized_key:
     user: "{{item.name}}"
     state: "{{item.state}}"
     key: "{{ lookup('file', 'files/authorized_key/{{item.key}}') }}"
   loop: "{{ users }}"
+  #when: "{{item.host}}" == 'all' or {{item.host}} == ansible_hostname
