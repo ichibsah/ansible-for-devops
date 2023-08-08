@@ -3,24 +3,20 @@
   hosts: firstimeonly
   ignore_errors: true
   ignore_unreachable: true
-  remote_user: root
-  #remote_user: ibrahim
+  #remote_user: root
+  remote_user: ibrahim
   become: true
   become_user: root
-  #become_method: su
+  become_method: su
 
-  pre_tasks:
-    - name: PCKG | Install ansible package using apt
-      apt:
-        name:  
-          - python3
-          - sudo
-        state: present
-
+  # requrements:
+  #   - proxmoxer
+  #   - requests
 
   roles:
-    - ssh
-    - provisions
+    #- provisions
+    #- ssh
+    - proxmox
 
 # - name: PROVISIONS | First time Initialisation - LOCALHOST
 #   hosts: local

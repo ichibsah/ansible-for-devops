@@ -7,7 +7,10 @@ prvs_root_passwd: no            # update root passward
 users:
   - name: root
     shell: /bin/bash
-    groups: root, sudo, docker
+    groups: 
+      - root
+      - sudo
+      #- docker
     append: True
     state: present
     key: root.pub
@@ -15,7 +18,10 @@ users:
     hosts: all
   - name: ibrahim
     shell: /bin/bash
-    groups: ibrahim, sudo, docker
+    groups: 
+      - adm
+      - sudo
+      #- docker
     append: True
     state: present
     key: ibrahim.pub
