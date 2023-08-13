@@ -15,7 +15,11 @@ prvs_root_passwd: yes                     # update root passward
 #
 dkr_copy_def_files: yes                   # Copy default docker files to target server
 dkr_copy_etx_files: no                   # # Copy extended docker files to target host
+#
+dckr_fldr_lst:                            # Docker folder list that will be copied when set in the host variable
+- { fldr: "deb1202" }
 
+#
 crntb_activate_cronjobs: no
 #
 #

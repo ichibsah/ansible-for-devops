@@ -1,7 +1,9 @@
 ---
+version: '3.5'
 networks:
   frontend:
     external: true
+    name: frontend
 services:
   teleport:
     image: public.ecr.aws/gravitational/teleport-distroless:13
@@ -28,3 +30,6 @@ services:
     networks:
       - frontend
     restart: unless-stopped
+
+
+    # $ docker network create frontend || true
