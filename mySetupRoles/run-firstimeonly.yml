@@ -3,8 +3,8 @@
   hosts: firstimeonly
   ignore_errors: true
   ignore_unreachable: true
-  remote_user: root
-  #remote_user: ibrahim
+  #remote_user: root
+  remote_user: ibrahim
   become: true
   become_user: root
   become_method: su

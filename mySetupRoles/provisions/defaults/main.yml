@@ -10,9 +10,9 @@ users:
   - name: root
     shell: /bin/bash
     groups: 
-      - root
-      - sudo
-      #- docker
+      #- root
+      #- sudo
+      - docker
     append: True
     state: present
     key: root.pub
@@ -21,7 +21,7 @@ users:
   - name: ibrahim
     shell: /bin/bash
     groups: 
-      - adm
+      #- adm
       - sudo
       #- docker
     append: True
