@@ -4,6 +4,8 @@
 prvs_copy_home: yes             # Copy default user's home files in place
 prvs_root_passwd: no            # update root passward
 #
+#ansible_become_pass: '{{ localhost_become_pass }}'
+#
 users:
   - name: root
     shell: /bin/bash

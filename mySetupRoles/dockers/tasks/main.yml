@@ -1,6 +1,6 @@
 ---
 # tasks file for dockers
-- name: DOCKERS | Copy default docker files to "{{ansible_hostname}}"
+- name: Job 01 - DOCKERS | Copy default docker files to "{{ansible_hostname}}"
   copy:
     src: "files/docker"
     dest: "/opt/"
@@ -9,7 +9,7 @@
     mode: 0744
   when: ansible_os_family == 'Debian' and dkr_copy_def_files # ansible_hostname != 'virthost01' or ansible_hostname != '4a999ff' 
 
-- name: DOCKERS | Copy extended docker files to target host
+- name: Job 02 - DOCKERS | Copy extended docker files to target host
   copy:
     src: "files/a35a0d3/docker"
     dest: "/opt/"
@@ -18,7 +18,7 @@
     mode: 0744
   when: ansible_os_family == 'Debian' and dkr_copy_etx_files # ansible_hostname == 'a35a0d3'
 
-- name: DOCKERS | Copy Specific docker folder(s) to target host
+- name: Job 03 - DOCKERS | Copy Specific docker folder(s) to target host
   copy:
     src: "files/{{item.fldr}}/docker"
     dest: "/opt/"
@@ -28,6 +28,15 @@
   with_items:
     "{{ dckr_fldr_lst }}"
   when: dckr_fldr_lst.0 is defined
+
+- name: Job 04 - DOCKERS | Copy docker folder(s) to target host that matches "ansible_hostname"
+  copy:
+    src: "files/{{ansible_hostname}}/docker"
+    dest: "/opt/"
+    owner: ibrahim
+    group: ibrahim
+    mode: 0744
+  when: ansible_hostname != 'virthost01'
 
 
 # command: touch "{{ item.item }}"
