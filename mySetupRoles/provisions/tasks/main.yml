@@ -10,6 +10,7 @@
     #name: "{{item}}"
     state: present
   loop: "{{ users }}"
+  #loop: "{{ users['groups'] }}"
   # loop:
   #   - docker
   #   - ibrahim
