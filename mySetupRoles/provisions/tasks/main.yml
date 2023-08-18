@@ -9,6 +9,8 @@
     name: "{{item}}"
     state: present
   loop: "{{ users[1].groups }}" # works but 1 array only
+  #msg: "{{ bands.keys() }}"
+  # https://www.redhat.com/sysadmin/ansible-lists-dictionaries-yaml
   #tags: test
 
   #loop: "{{ users['groups'] }}"
