@@ -2,6 +2,7 @@
 # https://www.ansiblepilot.com/articles/mount-an-nfs-share-in-linux-ansible-module-mount/
 # https://github.com/lucab85
 # https://docs.ansible.com/ansible/latest/collections/ansible/posix/mount_module.html
+# https://debugthis.dev/ansible/2019-09-29-ansible-for-mounting-nfs-shares/
 
 - name: mount module demo
   hosts: all

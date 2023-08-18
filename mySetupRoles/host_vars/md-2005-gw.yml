@@ -31,8 +31,10 @@ apt_host_pckg_lst:                        # Install Host Specific Packages (keep
 - bind9utils
 - bind9-doc
 - dnsutils
-- qemu-system
-- qemu-user-static
+- isc-dhcp-common
+- isc-dhcp-server
+#- qemu-system
+#- qemu-user-static
 pip_host_pckg_lst:                        # Install Host Specific PIP Packages when ansible is also installed
 
 apt_hst_strt_srvc_lst:                        # Ensure Host Specific Services are running.
