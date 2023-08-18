@@ -39,5 +39,6 @@ pip_host_pckg_lst:                        # Install Host Specific PIP Packages w
 
 apt_hst_strt_srvc_lst:                        # Ensure Host Specific Services are running.
   - bind9
+  - isc-dhcp-server
 #
 instl_anydesk: yes                        # install AnyDesk in this client
