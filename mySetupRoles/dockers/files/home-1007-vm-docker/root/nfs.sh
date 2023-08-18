@@ -1,6 +1,6 @@
 sudo mkdir -p /mnt/docker
-sudo mount -t nfs -o rw,nconnect=16 10.0.0.131:/docker /mnt/docker
-
+#sudo mount -t nfs -o rw,nconnect=16 10.0.0.131:/docker /mnt/docker
+mount -t nfs -vvvv 10.0.0.131:/mnt/Pool01-VMs/docker /mnt/
 #sudo mount -t nfs -o rw,nconnect=16
 
 # sudo nano /etc/fstab
@@ -12,3 +12,10 @@ sudo mount -t nfs -o rw,nconnect=16 10.0.0.131:/docker /mnt/docker
 
 # umount 10.10.0.10:/backups 
 # umount /var/backups
+# umount /mnt/docker
+# umount /mnt
+
+# showmount -e 10.0.0.131
+# showmount -e 10.0.0.137
+
+# rpcinfo -p 10.0.0.131

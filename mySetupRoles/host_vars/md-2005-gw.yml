@@ -1,10 +1,10 @@
 hostname_additional_hosts:
-  - ip_address: 10.0.0.137
-    hostname: home-1007-vm-docker.skyline.lan
-    hostname_short: home-1007-vm-docker
-  - ip_address: 10.0.0.137
-    hostname: home-1007-vm-docker.home.sawadogo.xyz
-    hostname_short: home-1007-vm-docker
+  - ip_address: 10.3.0.254
+    hostname: md-2005-gw.md-shop.local
+    hostname_short: md-2005-gw
+  - ip_address: 192.168.0.80
+    hostname: md-2005-gw.md-shop.local
+    hostname_short: md-2005-gw
   
   #
 #virthost01.skyline.lan: 
@@ -24,16 +24,18 @@ crntb_activate_cronjobs: no
 instl_def_pckg: yes                       # Install complete packages. A 'no' will remove it from the host (apt_def_pckg_lst)
 instl_utl_pckg: yes                        # Install complete packages. A 'no' will remove it from the host (apt_util_lst)
 sysd_strt_srvc: yes                       # Start services
-instl_ansbl_pckg: no                      # Install ansible using PIP (pip_ansbl_pckg_lst apt_ansbl_pckg_lst)
+instl_ansbl_pckg: yes                      # Install ansible using PIP (pip_ansbl_pckg_lst apt_ansbl_pckg_lst)
 instl_docker_pckg: yes                    # Install Docker package (apt_docker_pckg_lst)
 apt_host_pckg_lst:                        # Install Host Specific Packages (keep this empty. use host_var to overwrite it)
-  - nfs-common
-  - nfs-utils
-  - nfs4-acl-tools
-
-
+- bind9
+- bind9utils
+- bind9-doc
+- dnsutils
+- qemu-system
+- qemu-user-static
 pip_host_pckg_lst:                        # Install Host Specific PIP Packages when ansible is also installed
 
 apt_hst_strt_srvc_lst:                        # Ensure Host Specific Services are running.
-
+  - bind9
 #
+instl_anydesk: yes                        # install AnyDesk in this client
