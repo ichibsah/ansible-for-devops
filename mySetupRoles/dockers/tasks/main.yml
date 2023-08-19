@@ -47,6 +47,11 @@
     mode: 0700
   when: ansible_hostname != 'virthost01'
 
+- name: Apply condition to each task in role
+  ansible.builtin.import_tasks:
+    file: bind.yml
+  #when: apt_host_pckg_lst | contains bind9
+
 # command: touch "{{ item.item }}"
 #   with_items:
 #       - { item: "1" }
