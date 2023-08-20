@@ -9,3 +9,8 @@
   ansible.builtin.service:
     name: isc-dhcp-server
     state: restarted
+#
+- name: Restart networking
+  ansible.builtin.service:
+    name: networking
+    state: restarted

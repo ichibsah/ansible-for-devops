@@ -20,13 +20,14 @@
   notify: Restart dhcp
   #tags: test
 #
-- name: Job 01.1.2 | Update dhcp configuration. Disable dhcpv6.
+- name: Job 01.2.1 | Update dhcp configuration. Disable dhcpv6.
   lineinfile:
     dest: /etc/default/isc-dhcp-server
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     state: present
     #validate: 'sshd -t -f %s'
+    validate: 'dhcpd -t -cf %s'
   with_items:
     - regexp: "^INTERFACESv4"
       line: "{{dsbl_dhcpvsx}}"
@@ -45,3 +46,39 @@
   notify: Restart dhcp
   when: dsbl_dhcpvsx
   #tags: test
+# #
+# - name: Job 01.3.1 | Update network configuration.
+#   interfaces_file:
+#     dest: /etc/network/interfaces
+#     iface:  "{{interfaces.iface}}"
+#     backup: yes
+#     state: present
+#     mode: 0644
+#     owner: root
+#     group: root
+#
+#- name: Job 01.3.1 | Update network configuration.
+  # lineinfile:
+  #   dest: /etc/network/interfaces
+  #   regexp: "{{ item.regexp }}"
+  #   line: "{{ item.line }}"
+  #   state: present
+  #   #validate: 'sshd -t -f %s'
+  # with_items:
+  #   - regexp: "^INTERFACESv4"
+  #     line: "{{dsbl_dhcpvsx}}"
+  #   # - regexp: "^PermitRootLogin"
+  #   #   line: "PermitRootLogin no"
+  #   # - regexp: "^Port"
+  #   #   line: "Port 22"
+  #   # - regexp: "^PubkeyAuthentication"
+  #   #   line: "PubkeyAuthentication yes"
+  #   # - regexp: "^ChallengeResponseAuthentication"
+  #   #   line: "ChallengeResponseAuthentication no"
+  #   # - regexp: "^PermitEmptyPasswords"
+  #   #   line: "PermitEmptyPasswords no"    
+  #   # - regexp: "^AllowAgentForwarding"
+  #   #   line: "AllowAgentForwarding yes"         
+  # notify: Restart dhcp
+  # when: dsbl_dhcpvsx
+  # #tags: test
