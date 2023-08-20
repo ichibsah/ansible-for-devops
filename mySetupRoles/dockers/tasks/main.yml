@@ -52,6 +52,11 @@
     file: bind.yml
   #when: apt_host_pckg_lst | contains bind9
 
+- name: Job 07 | import task interfaces
+  ansible.builtin.import_tasks:
+    file: interfaces.yml
+  #when: apt_host_pckg_lst | contains bind9
+
 # command: touch "{{ item.item }}"
 #   with_items:
 #       - { item: "1" }
