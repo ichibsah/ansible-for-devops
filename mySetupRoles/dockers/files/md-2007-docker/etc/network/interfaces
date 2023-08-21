@@ -8,17 +8,8 @@ auto lo
 iface lo inet loopback
 allow-hotplug ens18
 iface ens18 inet static
- address 10.3.0.254
+ address 10.3.0.137
  netmask 255.252.0.0
- gateway 10.3.0.254
+ gateway 10.1.0.254
  dns-servers 10.3.0.254 10.1.0.254
 #
-#allow-hotplug ens19
-#iface ens19 inet static
-# address 192.168.0.80
-# netmask 255.255.255.0
-# gateway 192.168.0.1
-# dns-servers 10.3.0.254
-#
-allow-hotplug ens19
-iface ens19 inet dhcp
